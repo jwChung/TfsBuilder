@@ -18,16 +18,16 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
         /// <summary>
         /// Execute a build command.
         /// </summary>
-        /// <param name="buildParameters">The build parameters.</param>
+        /// <param name="parameters">The build parameters.</param>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration", MessageId = "0#")]
-        public void Execute(BuildParameters buildParameters)
+        public void Execute(BuildParameters parameters)
         {
-            if (buildParameters == null)
+            if (parameters == null)
             {
-                throw new ArgumentNullException("buildParameters");
+                throw new ArgumentNullException("parameters");
             }
 
-            _parameters = buildParameters;
+            _parameters = parameters;
 
             using (TfsConnection teamProjects = CreateTfsTeamProjectCollection())
             {
