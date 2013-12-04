@@ -63,8 +63,8 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
 
             if (!ModelState.IsValid)
             {
-                var messages = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage);
-                throw new ArgumentException(string.Join(Environment.NewLine, messages), "parameters");
+                var errorMessages = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage);
+                return Content(string.Join(Environment.NewLine, errorMessages));
             }
 
             if (HasCommits(parameters.PayLoad))

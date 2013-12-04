@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using Jwc.AutoFixture.Xunit;
 using Jwc.TfsBuilder.WebApplication.Infrastructure;
 using Jwc.TfsBuilder.WebApplication.Models;
@@ -91,9 +92,9 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
             var e = Assert.Throws<ArgumentNullException>(() => sut.Build(null));
             Assert.Equal("parameters", e.ParamName);
         }
-
+        
         [Spec]
-        public void BuildWithInvalidBuildParametersThrows(
+        public void BuildWithInvalidBuildParametersShowErroMessagesOnWebPage(
             [Build(BuildFlags.NoAutoProperties)] TfsBuilderController sut,
             BuildParameters parameters,
             string expected1,
@@ -103,11 +104,13 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
             sut.ModelState.AddModelError("dummy1", expected1);
             sut.ModelState.AddModelError("dummy2", expected2);
 
-            // Act & Assert
-            var e = Assert.Throws<ArgumentException>(() => sut.Build(parameters));
-            Assert.Equal("parameters", e.ParamName);
-            Assert.Contains(expected1, e.Message);
-            Assert.Contains(expected2, e.Message);
+            // Act
+            var actual = sut.Build(parameters);
+            
+            // Assert
+            var contentResult = Assert.IsType<ContentResult>(actual);
+            Assert.Contains(expected1, contentResult.Content);
+            Assert.Contains(expected2, contentResult.Content);
         }
 
         [Spec]
