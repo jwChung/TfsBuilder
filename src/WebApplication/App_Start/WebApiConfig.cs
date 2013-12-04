@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
+﻿using System.Web.Http;
 
-namespace WebApplication
+namespace Jwc.TfsBuilder.WebApplication
 {
     public static class WebApiConfig
     {
