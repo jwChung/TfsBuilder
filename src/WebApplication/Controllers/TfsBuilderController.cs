@@ -3,6 +3,8 @@ using System.Linq;
 using System.Web.Mvc;
 using Jwc.TfsBuilder.WebApplication.Infrastructure;
 using Jwc.TfsBuilder.WebApplication.Models;
+using Microsoft.TeamFoundation;
+using Microsoft.TeamFoundation.Framework.Client;
 
 namespace Jwc.TfsBuilder.WebApplication.Controllers
 {
@@ -82,7 +84,23 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
                 return Content("There are no commits to queue a build process.");
             }
 
-            BuildCommand.Execute(parameters);
+            try
+            {
+                BuildCommand.Execute(parameters);
+            }
+            catch (TeamFoundationServiceUnavailableException exception)
+            {
+                return Content(exception.Message);
+            }
+            catch (ProjectDoesNotExistWithNameException exception)
+            {
+                return Content(exception.Message);
+            }
+            catch (TfsBuildException exception)
+            {
+                return Content(exception.Message);
+            }
+
             return Content("Just have queued a build process.");
         }
 
