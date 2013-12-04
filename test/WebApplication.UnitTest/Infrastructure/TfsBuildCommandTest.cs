@@ -19,7 +19,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
         public void ExecuteWithNullParametersThrows(TfsBuildCommand sut)
         {
             var e = Assert.Throws<ArgumentNullException>(() => sut.Execute(null));
-            Assert.Equal("parameters", e.ParamName);
+            Assert.Equal("buildParameters", e.ParamName);
         }
 
         [PublishSpec]

@@ -18,15 +18,15 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
         /// <summary>
         /// Execute a build command.
         /// </summary>
-        /// <param name="parameters">The build parameters.</param>
-        public void Execute(BuildParameters parameters)
+        /// <param name="buildParameters">The build parameters.</param>
+        public void Execute(BuildParameters buildParameters)
         {
-            if (parameters == null)
+            if (buildParameters == null)
             {
-                throw new ArgumentNullException("parameters");
+                throw new ArgumentNullException("buildParameters");
             }
 
-            _parameters = parameters;
+            _parameters = buildParameters;
 
             using (TfsConnection teamProjects = CreateTfsTeamProjectCollection())
             {
