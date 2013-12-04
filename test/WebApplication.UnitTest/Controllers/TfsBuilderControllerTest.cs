@@ -104,7 +104,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
             sut.ModelState.AddModelError("dummy2", expected2);
 
             // Act & Assert
-            var e = Assert.Throws<ArgumentNullException>(() => sut.Build(parameters));
+            var e = Assert.Throws<ArgumentException>(() => sut.Build(parameters));
             Assert.Equal("parameters", e.ParamName);
             Assert.Contains(expected1, e.Message);
             Assert.Contains(expected2, e.Message);
