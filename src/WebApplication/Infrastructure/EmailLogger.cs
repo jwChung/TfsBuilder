@@ -8,13 +8,13 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
     /// <summary>
     /// Represents an email logger.
     /// </summary>
-    public class EmailLogger
+    public class EmailLogger : ILogger
     {
         /// <summary>
-        /// Sends an email with the subject and the body.
+        /// Sends an email with the <paramref name="subject"/> and the <paramref name="body"/>.
         /// </summary>
-        /// <param name="subject">The subject of the email.</param>
-        /// <param name="body">The body of the email.</param>
+        /// <param name="subject">A subject of the email.</param>
+        /// <param name="body">A body of the email.</param>
         public virtual void Log(string subject, string body)
         {
             if (subject == null)

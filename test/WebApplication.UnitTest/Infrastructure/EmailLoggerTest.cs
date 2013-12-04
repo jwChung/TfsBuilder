@@ -7,6 +7,12 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
     public class EmailLoggerTest
     {
         [Spec]
+        public void SutIsLogger(EmailLogger sut)
+        {
+            Assert.IsAssignableFrom<ILogger>(sut);
+        }
+
+        [Spec]
         public void LogWithNullSubjectThrows(EmailLogger sut, string body)
         {
             var e = Assert.Throws<ArgumentNullException>(() => sut.Log(null, body));
