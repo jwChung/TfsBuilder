@@ -19,7 +19,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
         /// Execute a build command.
         /// </summary>
         /// <param name="parameters">The build parameters.</param>
-        public virtual void Execute(BuildParameters parameters)
+        public void Execute(BuildParameters parameters)
         {
             if (parameters == null)
             {

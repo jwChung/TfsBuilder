@@ -15,7 +15,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
         /// </summary>
         /// <param name="subject">A subject of the email.</param>
         /// <param name="body">A body of the email.</param>
-        public virtual void Log(string subject, string body)
+        public void Log(string subject, string body)
         {
             if (subject == null)
             {
