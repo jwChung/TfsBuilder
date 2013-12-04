@@ -7,7 +7,7 @@ namespace Jwc.TfsBuilder.WebApplication
 {
     public class PublishSpecAttribute : SpecAttribute
     {
-#if !Publish
+#if !PUBLISH
         public override string Skip
         {
             get
