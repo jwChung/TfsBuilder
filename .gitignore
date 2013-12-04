@@ -157,7 +157,6 @@ $RECYCLE.BIN/
 # NuGet
 packages/*
 !packages/repositories.config
-.nuget/NuGet.exe
 
 # ReSharper
 *.DotSettings
