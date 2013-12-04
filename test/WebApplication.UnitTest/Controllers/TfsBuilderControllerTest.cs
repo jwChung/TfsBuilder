@@ -128,8 +128,8 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
         [CommitData]
         [InlineData]
         public void BuildWithCommitsExecutesBuildCommandAndReturns404Error(
-            [Inject(Matches.SameName)] string payload,
-            [Inject][Build(BuildFlags.ForceMocked)] TfsBuildCommand buildCommand,
+            [Inject(Matches.SameName)] string payload,  // to parameters
+            [Inject][Build(BuildFlags.ForceMocked)] TfsBuildCommand buildCommand, // to sut
             [Build(BuildFlags.NoAutoProperties)] TfsBuilderController sut,
             [Build] BuildParameters parameters)
         {
@@ -155,8 +155,8 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
         [Spec]
         [NonCommitData]
         public void BuildWithNoCommitsDoesNotExecuteBulidCommandAndReturns404Error(
-            [Inject(Matches.SameName)] string payload,
-            [Inject][Build(BuildFlags.ForceMocked)] TfsBuildCommand buildCommand,
+            [Inject(Matches.SameName)] string payload,  // to parameters
+            [Inject][Build(BuildFlags.ForceMocked)] TfsBuildCommand buildCommand, // to sut
             [Build(BuildFlags.NoAutoProperties)] TfsBuilderController sut,
             [Build] BuildParameters parameters)
         {
@@ -185,8 +185,8 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
         [BuildExceptionData]
         public void BuildShowsMessageExceptionThrownFromBuildCommand(
             Exception exception,
-            [Inject(Matches.SameName)] string payload,
-            [Inject][Build(BuildFlags.ForceMocked)] TfsBuildCommand buildCommand,
+            [Inject(Matches.SameName)] string payload, // to parameters
+            [Inject][Build(BuildFlags.ForceMocked)] TfsBuildCommand buildCommand, // to sut
             [Build(BuildFlags.NoAutoProperties)] TfsBuilderController sut,
             [Build] BuildParameters parameters)
         {
