@@ -16,7 +16,7 @@ namespace Jwc.TfsBuilder.WebApplication
             HttpContextBase httpContext,
             RouteCollection routes)
         {
-            var url = string.Format("~/build/{0}/{1}/{2}", s1, s2, s3);
+            var url = string.Format("~/api/{0}/{1}/{2}", s1, s2, s3);
             Mock.Get(httpContext).Setup(x => x.Request.AppRelativeCurrentExecutionFilePath).Returns(url);
             Mock.Get(httpContext).Setup(x => x.Request.PathInfo).Returns(string.Empty);
 

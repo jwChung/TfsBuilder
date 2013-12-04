@@ -18,7 +18,7 @@ namespace Jwc.TfsBuilder.WebApplication
 
             routes.MapRoute(
                 name: "BuildRoute",
-                url: "build/{account}/{teamProject}/{definitionName}",
+                url: "api/{account}/{teamProject}/{definitionName}",
                 defaults: new { controller = "TfsBuilder", action = "Build" });
         }
     }
