@@ -13,7 +13,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
     /// </summary>
     public class TfsBuilderController : Controller
     {
-        private readonly TfsBuildCommand _buildCommand;
+        private readonly ICommand<BuildParameters> _buildCommand;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TfsBuilderController"/>.
@@ -40,7 +40,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
         /// <summary>
         /// Gets a value indicating the build command.
         /// </summary>
-        public TfsBuildCommand BuildCommand
+        public ICommand<BuildParameters> BuildCommand
         {
             get
             {
