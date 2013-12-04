@@ -6,6 +6,7 @@ namespace Jwc.TfsBuilder.WebApplication
     /// <summary>
     /// Represents route configurations.
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1053:StaticHolderTypesShouldNotHaveConstructors")]
     public class RouteConfig
     {
         /// <summary>

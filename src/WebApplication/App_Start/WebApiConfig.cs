@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Web.Http;
 
 namespace Jwc.TfsBuilder.WebApplication
 {
@@ -13,6 +14,11 @@ namespace Jwc.TfsBuilder.WebApplication
         /// <param name="config">The http configuration.</param>
         public static void Register(HttpConfiguration config)
         {
+            if (config == null)
+            {
+                throw new ArgumentNullException("config");
+            }
+
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",

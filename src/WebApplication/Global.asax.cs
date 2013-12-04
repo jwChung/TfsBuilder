@@ -15,6 +15,7 @@ namespace Jwc.TfsBuilder.WebApplication
         /// <summary>
         /// Starts this application.
         /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();

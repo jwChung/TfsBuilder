@@ -7,6 +7,7 @@ namespace Jwc.TfsBuilder.WebApplication
     /// <summary>
     /// Represents global filter configurations.
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1053:StaticHolderTypesShouldNotHaveConstructors")]
     public class FilterConfig
     {
         /// <summary>
@@ -15,6 +16,11 @@ namespace Jwc.TfsBuilder.WebApplication
         /// <param name="filters">Global fileters.</param>
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
+            if (filters == null)
+            {
+                throw new ArgumentNullException("filters");
+            }
+
             filters.Add(new NotifyErrorAttribute(
                 logger: new EmailLogger(),
                 condition: new ExceptionSpecification(GetExceptionSpecification)));
