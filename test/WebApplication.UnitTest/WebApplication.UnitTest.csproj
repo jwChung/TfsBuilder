@@ -116,7 +116,6 @@
     <Compile Include="Infrastructure\RequireAppHarborHttpsAttributeTest.cs" />
     <Compile Include="PublishSpecAttribute.cs" />
     <Compile Include="Infrastructure\TfsBuildCommandTest.cs" />
-    <Compile Include="Learning\LearningTest.cs" />
     <Compile Include="Models\BuildParametersTest.cs" />
     <Compile Include="RouteConfigTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
