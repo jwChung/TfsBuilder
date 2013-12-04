@@ -65,17 +65,15 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
                 throw new ArgumentNullException("filterContext");
             }
 
-            if (!Condition.Equals(filterContext.Exception))
+            if (Condition.Equals(filterContext.Exception))
             {
-                return;
-            }
-
-            Logger.Log(
+                Logger.Log(
                 subject: string.Format(
                     CultureInfo.CurrentCulture,
                     "TfsBuilder - {0}",
                     filterContext.Exception.GetType().Name),
                 body: filterContext.Exception.ToString());
+            }
 
             filterContext.Result = new HttpNotFoundResult();
             filterContext.ExceptionHandled = true;

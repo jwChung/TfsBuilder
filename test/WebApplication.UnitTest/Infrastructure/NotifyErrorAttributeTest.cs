@@ -119,11 +119,12 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
             sut.OnException(context);
 
             // Assert
-            Assert.False(context.ExceptionHandled);
+            Assert.True(context.ExceptionHandled);
 
             Mock.Get(logger).Verify(x => x.Log(It.IsAny<string>(), It.IsAny<string>()), Times.Never());
 
-            Assert.IsType<EmptyResult>(context.Result);
+            var result = Assert.IsAssignableFrom<HttpStatusCodeResult>(context.Result);
+            Assert.Equal(404, result.StatusCode);
         }
     }
 }
