@@ -22,11 +22,10 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
             var parameters = CreateValidBuildParameters();
             parameters.Account = invalidAccount;
 
-            var e = Assert.Throws<TfsBuildException>(() => sut.Execute(parameters));
-            var inner = Assert.IsType<TeamFoundationServiceUnavailableException>(e.InnerException);
+            var e = Assert.Throws<TeamFoundationServiceUnavailableException>(() => sut.Execute(parameters));
             Assert.Contains(
                 "Unable to connect to this Team Foundation Server",
-                inner.Message);
+                e.Message);
         }
 
         [Spec(Skip = "To run this test, set build information below and run this test explicitly")]
@@ -35,11 +34,10 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
             var parameters = CreateValidBuildParameters();
             parameters.TeamProject = invalidTeamProject;
 
-            var e = Assert.Throws<TfsBuildException>(() => sut.Execute(parameters));
-            var inner = Assert.IsType<ProjectDoesNotExistWithNameException>(e.InnerException);
+            var e = Assert.Throws<ProjectDoesNotExistWithNameException>(() => sut.Execute(parameters));
             Assert.Contains(
                 "The following project does not exist: " + invalidTeamProject,
-                inner.Message);
+                e.Message);
         }
 
         [Spec(Skip = "To run this test, set build information below and run this test explicitly")]

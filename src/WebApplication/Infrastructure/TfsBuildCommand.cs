@@ -3,10 +3,8 @@ using System.Globalization;
 using System.Linq;
 using System.Net;
 using Jwc.TfsBuilder.WebApplication.Models;
-using Microsoft.TeamFoundation;
 using Microsoft.TeamFoundation.Build.Client;
 using Microsoft.TeamFoundation.Client;
-using Microsoft.TeamFoundation.Framework.Client;
 
 namespace Jwc.TfsBuilder.WebApplication.Infrastructure
 {
@@ -32,7 +30,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
 
             using (TfsConnection teamProjects = CreateTfsTeamProjectCollection())
             {
-                Authenticate(teamProjects);
+                teamProjects.Authenticate();
                 QueueBuild(teamProjects);
             }
         }
@@ -54,41 +52,13 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
             return new TfsTeamProjectCollection(uri, tfsCred);
         }
 
-        private static void Authenticate(TfsConnection teamProjects)
-        {
-            try
-            {
-                teamProjects.Authenticate();
-            }
-            catch (TeamFoundationServiceUnavailableException exception)
-            {
-                throw new TfsBuildException(
-                    "Check out the inner exception",
-                    exception);
-            }
-        }
-
         private void QueueBuild(TfsConnection teamProjects)
-        {       
+        {
             var buildServer = teamProjects.GetService<IBuildServer>();
             buildServer.QueueBuild(GetBuildDefinition(buildServer));
         }
 
         private IBuildDefinition GetBuildDefinition(IBuildServer buildServer)
-        {
-            try
-            {
-                return GetBuildDefinitionImpl(buildServer);
-            }
-            catch (ProjectDoesNotExistWithNameException exception)
-            {
-                throw new TfsBuildException(
-                    "Check out the inner exception",
-                    exception);
-            }
-        }
-
-        private IBuildDefinition GetBuildDefinitionImpl(IBuildServer buildServer)
         {
             IBuildDefinition buildDefinition = buildServer
                 .QueryBuildDefinitions(_parameters.TeamProject)
