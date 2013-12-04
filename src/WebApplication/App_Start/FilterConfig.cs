@@ -30,7 +30,7 @@ namespace Jwc.TfsBuilder.WebApplication
 
         private static bool GetExceptionSpecification(Exception e)
         {
-            return !(e is ArgumentException) && !(e is TfsBuildException);
+            return true;
         }
     }
 }

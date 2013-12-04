@@ -25,9 +25,9 @@ namespace Jwc.TfsBuilder.WebApplication
         [Spec]
         [InlineData(typeof(Exception), true)]
         [InlineData(typeof(InvalidOperationException), true)]
-        [InlineData(typeof(ArgumentException), false)]
-        [InlineData(typeof(ArgumentNullException), false)]
-        [InlineData(typeof(TfsBuildException), false)]
+        [InlineData(typeof(ArgumentException), true)]
+        [InlineData(typeof(ArgumentNullException), true)]
+        [InlineData(typeof(TfsBuildException), true)]
         public void RegisterGlobalFiltersRegistersCorrectNotifyErrorAttribute(
             Type exceptionType,
             bool expected,
