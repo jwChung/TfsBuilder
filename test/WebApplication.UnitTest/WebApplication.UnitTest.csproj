@@ -90,6 +90,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\HomeControllerTest.cs" />
+    <Compile Include="Controllers\TfsBuilderControllerTest.cs" />
     <Compile Include="Infrastructure\EmailLoggerTest.cs" />
     <Compile Include="Infrastructure\ExceptionSpecificationTest.cs" />
     <Compile Include="Infrastructure\NotifyErrorAttributeTest.cs" />
