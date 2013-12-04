@@ -21,16 +21,8 @@ namespace Jwc.TfsBuilder.WebApplication
                 throw new ArgumentNullException("filters");
             }
 
-            filters.Add(new NotifyErrorAttribute(
-                logger: new EmailLogger(),
-                condition: new ExceptionSpecification(GetExceptionSpecification)));
-
+            filters.Add(new NotifyErrorAttribute(new EmailLogger()));
             filters.Add(new HandleErrorAttribute());
-        }
-
-        private static bool GetExceptionSpecification(Exception e)
-        {
-            return true;
         }
     }
 }

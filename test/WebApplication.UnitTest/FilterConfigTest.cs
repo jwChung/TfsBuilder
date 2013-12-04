@@ -23,14 +23,7 @@ namespace Jwc.TfsBuilder.WebApplication
         }
 
         [Spec]
-        [InlineData(typeof(Exception), true)]
-        [InlineData(typeof(InvalidOperationException), true)]
-        [InlineData(typeof(ArgumentException), true)]
-        [InlineData(typeof(ArgumentNullException), true)]
-        [InlineData(typeof(TfsBuildException), true)]
         public void RegisterGlobalFiltersRegistersCorrectNotifyErrorAttribute(
-            Type exceptionType,
-            bool expected,
             GlobalFilterCollection filters)
         {
             // Arrange
@@ -40,10 +33,6 @@ namespace Jwc.TfsBuilder.WebApplication
             // Assert
             var notifyErrorAttribute = filters.Select(f => f.Instance).OfType<NotifyErrorAttribute>().Single();
             Assert.IsType<EmailLogger>(notifyErrorAttribute.Logger);
-
-            var condition = Assert.IsType<ExceptionSpecification>(notifyErrorAttribute.Condition);
-            var result = condition.Equals((Exception)Activator.CreateInstance(exceptionType));
-            Assert.Equal(expected, result);
         }
     }
 }
