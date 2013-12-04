@@ -65,48 +65,48 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
 
             if (!ModelState.IsValid)
             {
-                return BuildOnInvalidModelState();
+                return Content(GetInvalidModelStateMessage());
             }
 
-            return BuildOnValidModelState(parameters);
-        }
-
-        private ActionResult BuildOnInvalidModelState()
-        {
-            var errorMessages = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage);
-            return Content(string.Join(Environment.NewLine, errorMessages));
-        }
-
-        private ActionResult BuildOnValidModelState(BuildParameters parameters)
-        {
             if (!HasCommits(parameters.PayLoad))
             {
                 return Content("There are no commits to queue a build process.");
             }
 
+            return Content(GetBuildResult(parameters));
+        }
+
+        private string GetInvalidModelStateMessage()
+        {
+            var errorMessages = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage);
+            return string.Join(Environment.NewLine, errorMessages);
+        }
+
+        private static bool HasCommits(string payload)
+        {
+            return !payload.Contains("\"commits\":[]");
+        }
+
+        private string GetBuildResult(BuildParameters parameters)
+        {
             try
             {
                 BuildCommand.Execute(parameters);
             }
             catch (TeamFoundationServiceUnavailableException exception)
             {
-                return Content(exception.Message);
+                return exception.Message;
             }
             catch (ProjectDoesNotExistWithNameException exception)
             {
-                return Content(exception.Message);
+                return exception.Message;
             }
             catch (TfsBuildException exception)
             {
-                return Content(exception.Message);
+                return exception.Message;
             }
 
-            return Content("Just have queued a build process.");
-        }
-
-        private static bool HasCommits(string payload)
-        {
-            return !payload.Contains("\"commits\":[]");
+            return "Just have queued a build process.";
         }
     }
 }
