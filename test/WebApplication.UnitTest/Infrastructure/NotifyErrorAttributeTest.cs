@@ -25,7 +25,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
         [Spec]
         [InlineData(null)]
         public void CtorWithNullLoggerThrows(
-            [Inject] EmailLogger logger,
+            [Inject] ILogger logger,
             [Build] Lazy<NotifyErrorAttribute> sut)
         {
             var e = Assert.Throws<TargetInvocationException>(() => sut.Value);
@@ -35,7 +35,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
 
         [Spec]
         public void LoggerIsCorrect(
-            [Inject] EmailLogger expected,
+            [Inject] ILogger expected,
             [Build] NotifyErrorAttribute sut)
         {
             var actual = sut.Logger;
@@ -53,11 +53,10 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
         [Spec]
         public void OnExceptionLogsExceptionMessageAndHandlesException(
             Exception exception,
-            [Inject][Build(BuildFlags.ForceMocked)] EmailLogger logger,
+            [Inject] ILogger logger,
             [Build] NotifyErrorAttribute sut)
         {
             // Arrange
-            Mock.Get(logger).CallBase = false;
             var context = new ExceptionContext { Exception = exception };
             Assert.False(context.ExceptionHandled);
 

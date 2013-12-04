@@ -17,7 +17,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
         /// Initializes a new instance of the <see cref="NotifyErrorAttribute"/> class.
         /// </summary>
         /// <param name="logger">A logger.</param>
-        public NotifyErrorAttribute(EmailLogger logger)
+        public NotifyErrorAttribute(ILogger logger)
         {
             if (logger == null)
             {
