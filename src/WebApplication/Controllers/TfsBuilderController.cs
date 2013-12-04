@@ -109,6 +109,10 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
             {
                 return exception.Message;
             }
+            catch (UriFormatException exception)
+            {
+                return exception.Message;
+            }
 
             return "Just have queued a new build process.";
         }
