@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "";
+}
+
+<h3>To queue a build process</h3>
+
+<h4>How to</h4>
+
+<ol>
+    <li>Open the Service Hooks page of a project on Github.(Settings > Service Hooks)</li>
+    <li>On the left pane of the page, select the WebHook URLs service.</li>
+    <li>Add a url as the following form.
+
+<pre><code>https://tfsbuilder.apphb.com/api/{0}/{1}/{2}/?username={3}&amp;password={4}
+where,
+{0}: An account name of visual studio online,
+     which is the '{0}' part of https://{0}.visualstudio.com
+{1}: An project name in the account,
+     which is the '{1}' part of https://{0}.visualstudio.com/DefaultCollection/{1}
+{2}: An build definition name of the project, which you need to create on the online.
+{3}: your credential name on the online.
+{4}: your credential password on the online.
+</code></pre>
+    </li>
+</ol>
+
+<h4>Causion</h4>
+
+<ol>
+    <li>Your name and password will be secure with using HTTPS(SSL) even if these are sent as query string of the end of usl. (It will be changed to post form data.) However, we recommend to use ALTERNATE AUTHENTICATION CREDENTIALS. (<a href="http://www.visualstudio.com/en-us/get-started/share-your-xcode-projects-vs">Learn more</a>)</li>
+    <li>Use the '/' character before the '?' mark to send query string (Do not use as https://tfsbuilder.apphb.com/api/{0}/{1}/{2}?...), which can cause TfsBuilder not to queue your build process to Visual Studio Online.</li>
+</ol>
+
