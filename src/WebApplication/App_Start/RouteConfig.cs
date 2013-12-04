@@ -17,6 +17,12 @@ namespace Jwc.TfsBuilder.WebApplication
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "HomeIndex",
+                url: "{controller}/{action}",
+                defaults: new { controller = "Home", action = "Index" },
+                constraints: new { controller = "Home", action = "Index" });
+
+            routes.MapRoute(
                 name: "BuildRoute",
                 url: "api/{account}/{teamProject}/{definitionName}",
                 defaults: new { controller = "TfsBuilder", action = "Build" });

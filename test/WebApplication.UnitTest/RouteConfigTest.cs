@@ -3,6 +3,7 @@ using System.Web.Routing;
 using Jwc.AutoFixture.Xunit;
 using Moq;
 using Xunit;
+using Xunit.Extensions;
 
 namespace Jwc.TfsBuilder.WebApplication
 {
@@ -28,6 +29,42 @@ namespace Jwc.TfsBuilder.WebApplication
             Assert.Equal(s1, routeData.Values["account"]);
             Assert.Equal(s2, routeData.Values["teamProject"]);
             Assert.Equal(s3, routeData.Values["definitionName"]);
+        }
+
+        [Spec]
+        [InlineData("~/")]
+        [InlineData("~/Home")]
+        [InlineData("~/Home/Index")]
+        public void RegisterRoutesRegistersHomeIndex(
+            string url,
+            HttpContextBase httpContext,
+            RouteCollection routes)
+        {
+            Mock.Get(httpContext).Setup(x => x.Request.AppRelativeCurrentExecutionFilePath).Returns(url);
+            Mock.Get(httpContext).Setup(x => x.Request.PathInfo).Returns(string.Empty);
+
+            RouteConfig.RegisterRoutes(routes);
+
+            var routeData = routes.GetRouteData(httpContext);
+            Assert.Equal("Home", routeData.Values["controller"]);
+            Assert.Equal("Index", routeData.Values["action"]);
+        }
+
+        [Spec]
+        public void RegisterRoutesDoesNotRegistersOtherControllerAndAction(
+            string controller,
+            string action,
+            HttpContextBase httpContext,
+            RouteCollection routes)
+        {
+            var url = string.Format("{0}/{1}", controller, action);
+            Mock.Get(httpContext).Setup(x => x.Request.AppRelativeCurrentExecutionFilePath).Returns(url);
+            Mock.Get(httpContext).Setup(x => x.Request.PathInfo).Returns(string.Empty);
+
+            RouteConfig.RegisterRoutes(routes);
+
+            var routeData = routes.GetRouteData(httpContext);
+            Assert.Null(routeData);
         }
     }
 }
