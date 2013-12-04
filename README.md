@@ -18,7 +18,7 @@ This project is for a service hook to queue a build process on Visual Studio Onl
         {3}: Your credential name on the online.
         {4}: Your credential password on the online.
 
-#### Causion ####
+#### Caution ####
 1. Your name and password will be secure with using HTTPS(SSL) even if these are sent as query string of the end of usl. However, we recommend to use ALTERNATE AUTHENTICATION CREDENTIALS. ([Learn more])
 2. Use the '/' character before the '?' mark to send query string (Do not use as https://tfsbuilder.apphb.com/api/{0}/{1}/{2}?...), which can cause TfsBuilder not to queue your build process to Visual Studio Online.
 
