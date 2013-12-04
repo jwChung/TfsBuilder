@@ -63,16 +63,27 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
 
             if (!ModelState.IsValid)
             {
-                var errorMessages = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage);
-                return Content(string.Join(Environment.NewLine, errorMessages));
+                return BuildOnInvalidModelState();
             }
 
-            if (HasCommits(parameters.PayLoad))
+            return BuildOnValidModelState(parameters);
+        }
+
+        private ActionResult BuildOnInvalidModelState()
+        {
+            var errorMessages = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage);
+            return Content(string.Join(Environment.NewLine, errorMessages));
+        }
+
+        private ActionResult BuildOnValidModelState(BuildParameters parameters)
+        {
+            if (!HasCommits(parameters.PayLoad))
             {
-                BuildCommand.Execute(parameters);
+                return Content("There are no commits to queue a build process.");
             }
 
-            return HttpNotFound();
+            BuildCommand.Execute(parameters);
+            return Content("Just have queued a build process.");
         }
 
         private static bool HasCommits(string payload)

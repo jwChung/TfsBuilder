@@ -127,8 +127,8 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
             var actual = sut.Build(parameters);
 
             Mock.Get(buildCommand).Verify(x => x.Execute(parameters));
-            var result = Assert.IsType<HttpNotFoundResult>(actual);
-            Assert.Equal(result.StatusCode, 404);
+            var contentResult = Assert.IsType<ContentResult>(actual);
+            Assert.Equal("Just have queued a build process.", contentResult.Content);
         }
 
         [Spec]
@@ -146,8 +146,8 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
             var actual = sut.Build(parameters);
 
             Mock.Get(buildCommand).Verify(x => x.Execute(parameters), Times.Never());
-            var result = Assert.IsType<HttpNotFoundResult>(actual);
-            Assert.Equal(result.StatusCode, 404);
+            var contentResult = Assert.IsType<ContentResult>(actual);
+            Assert.Equal("There are no commits to queue a build process.", contentResult.Content);
         }
     }
 }
