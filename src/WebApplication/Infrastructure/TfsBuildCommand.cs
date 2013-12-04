@@ -19,6 +19,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
         /// Execute a build command.
         /// </summary>
         /// <param name="buildParameters">The build parameters.</param>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration", MessageId = "0#")]
         public void Execute(BuildParameters buildParameters)
         {
             if (buildParameters == null)
