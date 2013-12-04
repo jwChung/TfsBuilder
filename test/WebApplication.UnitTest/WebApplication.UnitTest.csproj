@@ -89,6 +89,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infrastructure\EmailLoggerTest.cs" />
     <Compile Include="Infrastructure\TfsBuildCommandTest.cs" />
     <Compile Include="Models\BuildParametersTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

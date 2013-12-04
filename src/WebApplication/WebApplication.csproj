@@ -124,6 +124,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\EmailLogger.cs" />
     <Compile Include="Infrastructure\TfsBuildCommand.cs" />
     <Compile Include="Infrastructure\TfsBuildException.cs" />
     <Compile Include="Models\BuildParameters.cs" />
