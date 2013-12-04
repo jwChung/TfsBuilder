@@ -12,5 +12,15 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
         {
             Assert.IsAssignableFrom<Controller>(sut);
         }
+
+        [Spec]
+        public void IndexReturnsCorrectViewResult(
+            [Build(BuildFlags.NoAutoProperties)] HomeController sut)
+        {
+            var actual = sut.Index();
+
+            var viewResult = Assert.IsAssignableFrom<ViewResult>(actual);
+            Assert.Equal("Index", viewResult.ViewName);
+        }
     }
 }

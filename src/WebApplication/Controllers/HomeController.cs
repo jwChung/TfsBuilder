@@ -1,5 +1,4 @@
-﻿using System;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace Jwc.TfsBuilder.WebApplication.Controllers
 {
@@ -13,8 +12,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
         /// </summary>
         public ActionResult Index()
         {
-            ////return View();
-            throw new NotImplementedException();
+            return View("Index");
         }
 	}
 }
