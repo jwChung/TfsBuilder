@@ -68,7 +68,8 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
             {
                 throw new TfsBuildException(string.Format(
                     CultureInfo.CurrentCulture,
-                    "No build definition was found for team project AutoFixture.Contrib with name {0}.",
+                    "No build definition was found for team project {0} with name {1}.",
+                    _parameters.TeamProject,
                     _parameters.DefinitionName));
             }
 
