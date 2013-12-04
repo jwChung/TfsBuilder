@@ -54,6 +54,30 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
         }
 
         [Spec(Skip = "To run this test, set build information below and run this test explicitly")]
+        public void ExecuteWithInvalidUserNameThrows(TfsBuildCommand sut, string invalidUserName)
+        {
+            var parameters = CreateValidBuildParameters();
+            parameters.UserName = invalidUserName;
+
+            var e = Assert.Throws<TeamFoundationServerUnauthorizedException>(() => sut.Execute(parameters));
+            Assert.Contains(
+                "You are not authorized",
+                e.Message);
+        }
+
+        [Spec(Skip = "To run this test, set build information below and run this test explicitly")]
+        public void ExecuteWithInvalidPasswordThrows(TfsBuildCommand sut, string invalidPassword)
+        {
+            var parameters = CreateValidBuildParameters();
+            parameters.Password = invalidPassword;
+
+            var e = Assert.Throws<TeamFoundationServerUnauthorizedException>(() => sut.Execute(parameters));
+            Assert.Contains(
+                "You are not authorized",
+                e.Message);
+        }
+
+        [Spec(Skip = "To run this test, set build information below and run this test explicitly")]
         public void ExecuteWithValidParametersCreatesQueueBuild(TfsBuildCommand sut)
         {
             var parameters = CreateValidBuildParameters();

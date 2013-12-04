@@ -176,6 +176,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
                 yield return new object[] { new TeamFoundationServiceUnavailableException("messge", new Exception()) };
                 yield return new object[] { new ProjectDoesNotExistWithNameException("message") };
                 yield return new object[] { new TfsBuildException() };
+                yield return new object[] { new TeamFoundationServerUnauthorizedException() };
             }
         }
 

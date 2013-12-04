@@ -101,6 +101,10 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
             {
                 return exception.Message;
             }
+            catch (TeamFoundationServerUnauthorizedException exception)
+            {
+                return exception.Message;
+            }
             catch (TfsBuildException exception)
             {
                 return exception.Message;
