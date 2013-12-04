@@ -170,6 +170,7 @@
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Infrastructure\EmailLogger.cs" />
+    <Compile Include="Infrastructure\ILogger.cs" />
     <Compile Include="Infrastructure\NotifyErrorAttribute.cs" />
     <Compile Include="Infrastructure\RequireAppHarborHttpsAttribute.cs" />
     <Compile Include="Infrastructure\TfsBuildCommand.cs" />
