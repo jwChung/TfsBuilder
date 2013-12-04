@@ -11,7 +11,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
     [CLSCompliant(false)]
     public sealed class NotifyErrorAttribute : FilterAttribute, IExceptionFilter
     {
-        private readonly EmailLogger _logger;
+        private readonly ILogger _logger;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="NotifyErrorAttribute"/> class.
@@ -30,7 +30,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
         /// <summary>
         /// Gets a value indicating the logger.
         /// </summary>
-        public EmailLogger Logger
+        public ILogger Logger
         {
             get
             {
