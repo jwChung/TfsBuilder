@@ -11,7 +11,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
     /// <summary>
     /// Represents a build command.
     /// </summary>
-    public class TfsBuildCommand
+    public class TfsBuildCommand : ICommand<BuildParameters>
     {
         private BuildParameters _parameters;
 

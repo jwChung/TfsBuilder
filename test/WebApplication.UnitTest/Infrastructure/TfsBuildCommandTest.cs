@@ -10,6 +10,12 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
     public class TfsBuildCommandTest
     {
         [Spec]
+        public void SutIsCommandOfBuildParameters(TfsBuildCommand sut)
+        {
+            Assert.IsAssignableFrom<ICommand<BuildParameters>>(sut);
+        }
+
+        [Spec]
         public void ExecuteWithNullParametersThrows(TfsBuildCommand sut)
         {
             var e = Assert.Throws<ArgumentNullException>(() => sut.Execute(null));
