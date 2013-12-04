@@ -7,7 +7,7 @@
     <ProjectGuid>{D94CFB07-D284-4AEB-B0D7-AA114FB038F1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebApplication.UnitTest</RootNamespace>
+    <RootNamespace>Jwc.TfsBuilder.WebApplication</RootNamespace>
     <AssemblyName>WebApplication.UnitTest</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -39,7 +39,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
