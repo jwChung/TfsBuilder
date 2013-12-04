@@ -3,8 +3,15 @@ using System.Web.Routing;
 
 namespace Jwc.TfsBuilder.WebApplication
 {
+    /// <summary>
+    /// Represents route configurations.
+    /// </summary>
     public class RouteConfig
     {
+        /// <summary>
+        /// Registers routes.
+        /// </summary>
+        /// <param name="routes">Routes to be registered.</param>
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");

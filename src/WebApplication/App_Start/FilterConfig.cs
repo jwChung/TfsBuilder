@@ -4,8 +4,15 @@ using Jwc.TfsBuilder.WebApplication.Infrastructure;
 
 namespace Jwc.TfsBuilder.WebApplication
 {
+    /// <summary>
+    /// Represents global filter configurations.
+    /// </summary>
     public class FilterConfig
     {
+        /// <summary>
+        /// Registers global filters.
+        /// </summary>
+        /// <param name="filters">Global fileters.</param>
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new NotifyErrorAttribute(
