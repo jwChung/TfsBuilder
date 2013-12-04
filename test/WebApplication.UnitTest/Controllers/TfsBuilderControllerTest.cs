@@ -169,7 +169,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
         {
             public override IEnumerable<object[]> GetData(MethodInfo methodUnderTest, Type[] parameterTypes)
             {
-                yield return new object[] { new TeamFoundationServiceUnavailableException("messge", new Exception()) };
+                yield return new object[] { new TeamFoundationServiceUnavailableException("reason") };
                 yield return new object[] { new ProjectDoesNotExistWithNameException("message") };
                 yield return new object[] { new TfsBuildException() };
                 yield return new object[] { new TeamFoundationServerUnauthorizedException() };
