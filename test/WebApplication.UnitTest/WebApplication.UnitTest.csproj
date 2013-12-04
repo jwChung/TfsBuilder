@@ -92,6 +92,7 @@
   <ItemGroup>
     <Compile Include="Controllers\HomeControllerTest.cs" />
     <Compile Include="Controllers\TfsBuilderControllerTest.cs" />
+    <Compile Include="FilterConfigTest.cs" />
     <Compile Include="Infrastructure\EmailLoggerTest.cs" />
     <Compile Include="Infrastructure\ExceptionSpecificationTest.cs" />
     <Compile Include="Infrastructure\NotifyErrorAttributeTest.cs" />
@@ -100,6 +101,7 @@
     <Compile Include="Models\BuildParametersTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PublishSpecAttribute.cs" />
+    <Compile Include="RouteConfigTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">
