@@ -110,7 +110,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
                 return exception.Message;
             }
 
-            return "Just have queued a build process.";
+            return "Just have queued a new build process.";
         }
     }
 }

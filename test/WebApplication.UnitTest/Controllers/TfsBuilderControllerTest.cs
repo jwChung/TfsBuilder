@@ -139,7 +139,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
 
             Mock.Get(buildCommand).Verify(x => x.Execute(parameters));
             var contentResult = Assert.IsType<ContentResult>(actual);
-            Assert.Equal("Just have queued a build process.", contentResult.Content);
+            Assert.Equal("Just have queued a new build process.", contentResult.Content);
         }
 
         private class NonCommitDataAttribute : DataAttribute
