@@ -25,7 +25,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
         [Spec]
         [InlineData(null)]
         public void CtorWithNullBuildCommandThrows(
-            [Inject] TfsBuildCommand buildCommand,
+            [Inject] ICommand<BuildParameters> buildCommand,
             [Build] Lazy<TfsBuilderController> sut)
         {
             var e = Assert.Throws<TargetInvocationException>(() => sut.Value);
@@ -44,7 +44,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
 
         [Spec]
         public void BuildCommandFromGreedyIsCorrect(
-            [Inject] TfsBuildCommand expected,
+            [Inject] ICommand<BuildParameters> expected,
             [Build(BuildFlags.NoAutoProperties)] TfsBuilderController sut)
         {
             var actual = sut.BuildCommand;
@@ -129,12 +129,10 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
         [InlineData]
         public void BuildWithCommitsExecutesBuildCommandAndReturns404Error(
             [Inject(Matches.SameName)] string payload,  // to parameters
-            [Inject][Build(BuildFlags.ForceMocked)] TfsBuildCommand buildCommand, // to sut
+            [Inject] ICommand<BuildParameters> buildCommand, // to sut
             [Build(BuildFlags.NoAutoProperties)] TfsBuilderController sut,
             [Build] BuildParameters parameters)
         {
-            Mock.Get(buildCommand).CallBase = false;
-
             var actual = sut.Build(parameters);
 
             Mock.Get(buildCommand).Verify(x => x.Execute(parameters));
@@ -156,12 +154,10 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
         [NonCommitData]
         public void BuildWithNoCommitsDoesNotExecuteBulidCommandAndReturns404Error(
             [Inject(Matches.SameName)] string payload,  // to parameters
-            [Inject][Build(BuildFlags.ForceMocked)] TfsBuildCommand buildCommand, // to sut
+            [Inject] ICommand<BuildParameters> buildCommand, // to sut
             [Build(BuildFlags.NoAutoProperties)] TfsBuilderController sut,
             [Build] BuildParameters parameters)
         {
-            Mock.Get(buildCommand).CallBase = false;
-
             var actual = sut.Build(parameters);
 
             Mock.Get(buildCommand).Verify(x => x.Execute(parameters), Times.Never());
@@ -186,11 +182,10 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
         public void BuildShowsMessageExceptionThrownFromBuildCommand(
             Exception exception,
             [Inject(Matches.SameName)] string payload, // to parameters
-            [Inject][Build(BuildFlags.ForceMocked)] TfsBuildCommand buildCommand, // to sut
+            [Inject] ICommand<BuildParameters> buildCommand, // to sut
             [Build(BuildFlags.NoAutoProperties)] TfsBuilderController sut,
             [Build] BuildParameters parameters)
         {
-            Mock.Get(buildCommand).CallBase = false;
             Mock.Get(buildCommand).Setup(x => x.Execute(parameters)).Throws(exception);
 
             var actual = sut.Build(parameters);

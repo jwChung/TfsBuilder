@@ -27,7 +27,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
         /// Initializes a new instance of the <see cref="TfsBuilderController"/> with a build command.
         /// </summary>
         /// <param name="buildCommand">Provides a command to build.</param>
-        public TfsBuilderController(TfsBuildCommand buildCommand)
+        public TfsBuilderController(ICommand<BuildParameters> buildCommand)
         {
             if (buildCommand == null)
             {
