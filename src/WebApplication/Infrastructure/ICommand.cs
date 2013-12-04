@@ -9,7 +9,7 @@
         /// <summary>
         /// Executes a command.
         /// </summary>
-        /// <param name="buildParameters">A command paramter.</param>
-        void Execute(T buildParameters);
+        /// <param name="parameter">A command paramter.</param>
+        void Execute(T parameter);
     }
 }
