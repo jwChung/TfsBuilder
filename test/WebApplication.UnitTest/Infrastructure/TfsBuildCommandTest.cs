@@ -54,8 +54,10 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
 
             var e = Assert.Throws<TfsBuildException>(() => sut.Execute(parameters));
             Assert.Contains(
-                "No build definition was found for team project AutoFixture.Contrib with name "
-                + invalidDefinitionName,
+                string.Format(
+                    "No build definition was found for team project {0} with name {1}",
+                    parameters.TeamProject,
+                    invalidDefinitionName),
                 e.Message);
         }
 
@@ -96,7 +98,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
             return new BuildParameters
             {
                 Account = "*****",
-                TeamProject = "AutoFixture.Contrib",
+                TeamProject = "*****",
                 DefinitionName = "*****",
                 UserName = "*****",
                 Password = "*****"
