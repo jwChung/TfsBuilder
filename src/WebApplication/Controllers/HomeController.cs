@@ -14,16 +14,21 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
         /// </summary>
         public ActionResult Index()
         {
-            string markdown;
-            using (var reader = new StreamReader(Server.MapPath("~/bin/README.md")))
-            {
-                markdown = reader.ReadToEnd();
-            }
-
-            var html = new Markdown().Transform(markdown);
-            ViewBag.Body = html;
-
+            ViewBag.Body = GetHtmlFromMarkdown(GetMarkdownContent());
             return View();
         }
-	}
+
+        private static string GetHtmlFromMarkdown(string markdown)
+        {
+            return new Markdown().Transform(markdown);
+        }
+
+        private string GetMarkdownContent()
+        {
+            using (var reader = new StreamReader(Server.MapPath("~/bin/README.md")))
+            {
+                return reader.ReadToEnd();
+            }
+        }
+    }
 }
