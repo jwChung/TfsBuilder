@@ -1,7 +1,5 @@
-﻿using System.Configuration;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
-using GoogleAnalyticsTracker.Web.Mvc;
 using Jwc.AutoFixture.Xunit;
 using Jwc.TfsBuilder.WebApplication.Infrastructure;
 using Xunit;
@@ -18,7 +16,7 @@ namespace Jwc.TfsBuilder.WebApplication
             FilterConfig.RegisterGlobalFilters(filters);
 
             Assert.Equal(
-                new[] { typeof(NotifyErrorAttribute), typeof(HandleErrorAttribute), typeof(ActionTrackingAttribute) },
+                new[] { typeof(NotifyErrorAttribute), typeof(HandleErrorAttribute) },
                 filters.Select(x => x.Instance.GetType()));
         }
 
@@ -33,24 +31,6 @@ namespace Jwc.TfsBuilder.WebApplication
             // Assert
             var notifyErrorAttribute = filters.Select(f => f.Instance).OfType<NotifyErrorAttribute>().Single();
             Assert.IsType<EmailLogger>(notifyErrorAttribute.Logger);
-        }
-
-        [Spec]
-        public void RegisterGlobalFiltersRegistersCorrectActionTrackingAttribute(
-            GlobalFilterCollection filters)
-        {
-            // Arrange
-            // Act
-            FilterConfig.RegisterGlobalFilters(filters);
-
-            // Assert
-            var actionTrackingAttribute = filters.Select(f => f.Instance).OfType<ActionTrackingAttribute>().Single();
-            Assert.Equal(
-                ConfigurationManager.AppSettings["GoogleAnalyticsTrackingId"],
-                actionTrackingAttribute.Tracker.TrackingAccount);
-            Assert.Equal(
-                ConfigurationManager.AppSettings["GoogleAnalyticsTrackingDomain"],
-                actionTrackingAttribute.Tracker.TrackingDomain);
         }
     }
 }

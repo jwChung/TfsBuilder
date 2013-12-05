@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Configuration;
 using System.Web.Mvc;
-using GoogleAnalyticsTracker.Web.Mvc;
 using Jwc.TfsBuilder.WebApplication.Infrastructure;
 
 namespace Jwc.TfsBuilder.WebApplication
@@ -25,10 +23,6 @@ namespace Jwc.TfsBuilder.WebApplication
 
             filters.Add(new NotifyErrorAttribute(new EmailLogger()));
             filters.Add(new HandleErrorAttribute());
-
-            filters.Add(new ActionTrackingAttribute(
-                ConfigurationManager.AppSettings["GoogleAnalyticsTrackingId"],
-                ConfigurationManager.AppSettings["GoogleAnalyticsTrackingDomain"]));
         }
     }
 }
