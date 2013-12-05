@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Configuration;
 using System.Net;
 using System.Net.Mail;
 
@@ -29,8 +28,8 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
 
             using (var client = new SmtpClient("smtp.gmail.com", 587))
             {
-                string gmailId = ConfigurationManager.AppSettings["GmailId"];
-                string gmailPassword = ConfigurationManager.AppSettings["GmailPassword"];
+                string gmailId = AppSettings.Instance.GmailId;
+                string gmailPassword = AppSettings.Instance.GmailPassword;
 
                 client.Credentials = new NetworkCredential(gmailId, gmailPassword);
                 client.EnableSsl = true;

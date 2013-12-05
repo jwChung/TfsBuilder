@@ -1,5 +1,4 @@
-﻿using System.Configuration;
-using GoogleAnalyticsTracker.Web.Mvc;
+﻿using GoogleAnalyticsTracker.Web.Mvc;
 using Jwc.AutoFixture.Xunit;
 using Xunit;
 
@@ -18,7 +17,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
         public void TrackingAccountIsCorrect(
             [Build(BuildFlags.NoAutoProperties)] TfsBuilderActionTrackingAttribute sut)
         {
-            var expected = ConfigurationManager.AppSettings["GoogleAnalyticsTrackingId"];
+            var expected = AppSettings.Instance.GoogleAnalyticsTrackingId;
 
             var actual = sut.Tracker.TrackingAccount;
 
@@ -29,7 +28,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
         public void TrackingDomainIsCorrect(
             [Build(BuildFlags.NoAutoProperties)] TfsBuilderActionTrackingAttribute sut)
         {
-            var expected = ConfigurationManager.AppSettings["GoogleAnalyticsTrackingDomain"];
+            var expected = AppSettings.Instance.GoogleAnalyticsTrackingDomain;
 
             var actual = sut.Tracker.TrackingDomain;
 

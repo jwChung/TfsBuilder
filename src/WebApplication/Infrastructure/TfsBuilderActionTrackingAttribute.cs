@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Configuration;
 using GoogleAnalyticsTracker.Web.Mvc;
 
 namespace Jwc.TfsBuilder.WebApplication.Infrastructure
@@ -15,8 +14,8 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
         /// Initializes a new instance of the <see cref="TfsBuilderActionTrackingAttribute"/> class.
         /// </summary>
         public TfsBuilderActionTrackingAttribute() : base(
-            ConfigurationManager.AppSettings["GoogleAnalyticsTrackingId"],
-            ConfigurationManager.AppSettings["GoogleAnalyticsTrackingDomain"])
+            (string)AppSettings.Instance.GoogleAnalyticsTrackingId,
+            (string)AppSettings.Instance.GoogleAnalyticsTrackingDomain)
         {
         }
     }
