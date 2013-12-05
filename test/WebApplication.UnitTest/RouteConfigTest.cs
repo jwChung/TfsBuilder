@@ -1,4 +1,6 @@
-﻿using System.Web;
+﻿using System;
+using System.Globalization;
+using System.Web;
 using System.Web.Routing;
 using Jwc.AutoFixture.Xunit;
 using Moq;
@@ -35,6 +37,7 @@ namespace Jwc.TfsBuilder.WebApplication
         [InlineData("~/")]
         [InlineData("~/Home")]
         [InlineData("~/Home/Index")]
+        [InlineData("~/home/index")]
         public void RegisterRoutesRegistersHomeIndex(
             string url,
             HttpContextBase httpContext,
@@ -46,8 +49,9 @@ namespace Jwc.TfsBuilder.WebApplication
             RouteConfig.RegisterRoutes(routes);
 
             var routeData = routes.GetRouteData(httpContext);
-            Assert.Equal("Home", routeData.Values["controller"]);
-            Assert.Equal("Index", routeData.Values["action"]);
+            var stringComparer = StringComparer.Create(CultureInfo.CurrentCulture, true);
+            Assert.Equal("Home", (string)routeData.Values["controller"], stringComparer);
+            Assert.Equal("Index", (string)routeData.Values["action"], stringComparer);
         }
 
         [Spec]
