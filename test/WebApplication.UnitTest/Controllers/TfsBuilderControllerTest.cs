@@ -179,7 +179,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
 
         [Spec]
         [BuildExceptionData]
-        public void BuildShowsMessageExceptionThrownFromBuildCommand(
+        public void BuildShowsMessageOfExceptionThrownFromBuildCommand(
             Exception exception,
             [Inject(Matches.SameName)] string payload, // to parameters
             [Inject] ICommand<BuildParameters> buildCommand, // to sut

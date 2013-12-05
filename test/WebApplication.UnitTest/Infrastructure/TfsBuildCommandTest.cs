@@ -34,7 +34,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
                 e.Message);
         }
 
-        [Spec(Skip = "To run this test, set build information below and run this test explicitly")]
+        [Spec(Skip = "To run this test, set build information below and run this test explicitly.")]
         public void ExecuteWithInvalidTeamProjectThrows(TfsBuildCommand sut, string invalidTeamProject)
         {
             var parameters = CreateValidBuildParameters();
@@ -46,7 +46,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
                 e.Message);
         }
 
-        [Spec(Skip = "To run this test, set build information below and run this test explicitly")]
+        [Spec(Skip = "To run this test, set build information below and run this test explicitly.")]
         public void ExecuteWithInvalidDefinitionNameThrows(TfsBuildCommand sut, string invalidDefinitionName)
         {
             var parameters = CreateValidBuildParameters();
@@ -59,7 +59,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
                 e.Message);
         }
 
-        [Spec(Skip = "To run this test, set build information below and run this test explicitly")]
+        [Spec(Skip = "To run this test, set build information below and run this test explicitly.")]
         public void ExecuteWithInvalidUserNameThrows(TfsBuildCommand sut, string invalidUserName)
         {
             var parameters = CreateValidBuildParameters();
@@ -71,7 +71,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
                 e.Message);
         }
 
-        [Spec(Skip = "To run this test, set build information below and run this test explicitly")]
+        [Spec(Skip = "To run this test, set build information below and run this test explicitly.")]
         public void ExecuteWithInvalidPasswordThrows(TfsBuildCommand sut, string invalidPassword)
         {
             var parameters = CreateValidBuildParameters();
@@ -83,7 +83,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
                 e.Message);
         }
 
-        [Spec(Skip = "To run this test, set build information below and run this test explicitly")]
+        [Spec(Skip = "To run this test, set build information below and run this test explicitly.")]
         public void ExecuteWithValidParametersCreatesQueueBuild(TfsBuildCommand sut)
         {
             var parameters = CreateValidBuildParameters();
