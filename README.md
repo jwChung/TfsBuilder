@@ -1,7 +1,7 @@
 ##Visual Studio Online Service Hook##
 
 ### Overview ###
-This project is for a service hook to queue a build process on Visual Studio Online and is serviced on <http://tfsbuilder.apphb.com/>.
+This project is for a service hook to queue a build process on [Visual Studio Online] and is serviced on <http://tfsbuilder.apphb.com/>.
 
 ### How to queue a build process ###
 1. Open the Service Hooks page of a project on Github.(Settings > Service Hooks)
@@ -39,4 +39,5 @@ First, make a html file having the following content, open the file with a web b
         </body>
     </html>
 
+[Visual Studio Online]: http://www.visualstudio.com
 [Learn more]: http://www.visualstudio.com/en-us/get-started/share-your-xcode-projects-vs
