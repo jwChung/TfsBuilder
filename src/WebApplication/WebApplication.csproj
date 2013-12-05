@@ -50,6 +50,9 @@
     <CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MarkdownSharp">
+      <HintPath>..\..\packages\MarkdownSharp.1.13.0.0\lib\35\MarkdownSharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.TeamFoundation.Build.Client, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -210,6 +213,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\Error.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\README.md">
+      <Link>README.md</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

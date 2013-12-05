@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System.IO;
+using System.Web.Mvc;
+using MarkdownSharp;
 
 namespace Jwc.TfsBuilder.WebApplication.Controllers
 {
@@ -12,7 +14,16 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
         /// </summary>
         public ActionResult Index()
         {
-            return View("Index");
+            string markdown;
+            using (var reader = new StreamReader(Server.MapPath("~/bin/README.md")))
+            {
+                markdown = reader.ReadToEnd();
+            }
+
+            var html = new Markdown().Transform(markdown);
+            ViewBag.Body = html;
+
+            return View();
         }
 	}
 }

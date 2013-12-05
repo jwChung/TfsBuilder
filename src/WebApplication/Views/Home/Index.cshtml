@@ -1,54 +1,13 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Visual Studio Online Service Hook";
 }
 
 <html>
     <head>
-        <title>Visual Studio Online Service Hook</title>
+        <title>@ViewBag.Title</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     </head>
     <body>
-        <h2>Visual Studio Online Service Hook</h2>
-        <h3>Overview</h3>
-        <p>This project is for a service hook to queue a build process on <a href="http://www.visualstudio.com">Visual Studio Online</a> and is serviced on <a href="http://tfsbuilder.apphb.com/">http://tfsbuilder.apphb.com/</a>.</p>
-        <h3>How to queue a build process on GitHub</h3>
-        <ol>
-            <li>Open the Service Hooks page of a project on Github.(Settings > Service Hooks)</li>
-            <li>On the left pane of the page, select the WebHook URLs service.</li>
-            <li>
-                <p>Add a url as the following form.</p>
-                <pre><code>https://tfsbuilder.apphb.com/api/{0}/{1}/{2}/?username={3}&amp;password={4}
-where,
-{0}: An account name of visual studio online,
-     which is the '{0}' part of https://{0}.visualstudio.com
-{1}: An project name in the account,
-     which is the '{1}' part of https://{0}.visualstudio.com/DefaultCollection/{1}
-{2}: An build definition name of the project, which you need to create on the online.
-{3}: Your credential name on the online.
-{4}: Your credential password on the online.
-</code></pre>
-            </li>
-        </ol>
-        <h3>Caution</h3>
-        <ol>
-            <li>Your name and password will be secure with using HTTPS(SSL) even if these are sent as query string of the end of usl. However, we recommend to use ALTERNATE AUTHENTICATION CREDENTIALS. (<a href="http://www.visualstudio.com/en-us/get-started/share-your-xcode-projects-vs">Learn more</a>)</li>
-            <li>Use the '/' character before the '?' mark to send query string (Do not use as https://tfsbuilder.apphb.com/api/{0}/{1}/{2}?...), which can cause TfsBuilder not to queue your build process to Visual Studio Online.</li>
-        </ol>
-        <h3>How to test</h3>
-        <p>
-            If you have any problem on queuing a build process, you can check out the problem with a test html file.
-            First, make a html file having the following content, open the file with a web browser, click the button 'Queue build', and then check out a message on the web page.
-        </p>
-        <pre><code>&lt;html&gt;
-    &lt;head&gt;
-        &lt;title&gt;Queue build tester&lt;/title&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-        &lt;form action="https://tfsbuilder.apphb.com/api/{0}/{1}/{2}/?username={3}&amp;password={4}&amp;payload=dummy" method="POST"&gt;
-            &lt;input type="submit" value="Queue build" /&gt;
-        &lt;/form&gt;
-    &lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
+        @Html.Raw(ViewBag.Body)
     </body>
 </html>
