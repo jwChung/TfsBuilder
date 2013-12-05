@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
+using GoogleAnalyticsTracker.Web.Mvc;
 using Jwc.AutoFixture.Xunit;
 using Jwc.TfsBuilder.WebApplication.Infrastructure;
 using Xunit;
@@ -16,7 +17,7 @@ namespace Jwc.TfsBuilder.WebApplication
             FilterConfig.RegisterGlobalFilters(filters);
 
             Assert.Equal(
-                new[] { typeof(NotifyErrorAttribute), typeof(HandleErrorAttribute) },
+                new[] { typeof(NotifyErrorAttribute), typeof(HandleErrorAttribute), typeof(ActionTrackingAttribute) },
                 filters.Select(x => x.Instance.GetType()));
         }
 
