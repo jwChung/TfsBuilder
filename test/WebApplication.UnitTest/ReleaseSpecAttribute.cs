@@ -12,7 +12,7 @@ namespace Jwc.TfsBuilder.WebApplication
         {
             get
             {
-                return "Only run on Publish mode mainly because a test is slow or kind of integration-testing.";
+                return "Only run on Release mode mainly because a test is a kind of integration-testing and very slow.";
             }
             set
             {
