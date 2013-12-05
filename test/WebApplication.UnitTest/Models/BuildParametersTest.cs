@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Reflection;
 using Jwc.AutoFixture.Xunit;
 using Xunit;
 
@@ -161,7 +162,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
         {
             var sut = typeof(BuildParameters).GetProperty(propertyName);
 
-            var actual = sut.GetCustomAttributes(false).OfType<RequiredAttribute>().Single();
+            var actual = sut.GetCustomAttribute<RequiredAttribute>();
 
             Assert.NotNull(actual);
         }
