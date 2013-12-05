@@ -125,6 +125,7 @@
     <Compile Include="Controllers\HomeControllerTest.cs" />
     <Compile Include="Controllers\TfsBuilderControllerTest.cs" />
     <Compile Include="FilterConfigTest.cs" />
+    <Compile Include="Infrastructure\AppSettingsTest.cs" />
     <Compile Include="Infrastructure\EmailLoggerTest.cs" />
     <Compile Include="Infrastructure\NotifyErrorAttributeTest.cs" />
     <Compile Include="Infrastructure\RequireAppHarborHttpsAttributeTest.cs" />
