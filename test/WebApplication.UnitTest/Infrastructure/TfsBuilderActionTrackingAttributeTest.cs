@@ -23,16 +23,5 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
 
             Assert.Equal(expected, actual);
         }
-
-        [Spec]
-        public void TrackingDomainIsCorrect(
-            [Build(BuildFlags.NoAutoProperties)] TfsBuilderActionTrackingAttribute sut)
-        {
-            var expected = AppSettings.Instance.GoogleAnalyticsTrackingDomain;
-
-            var actual = sut.Tracker.TrackingDomain;
-
-            Assert.Equal(expected, actual);
-        }
     }
 }

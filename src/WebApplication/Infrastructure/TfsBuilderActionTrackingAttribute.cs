@@ -13,9 +13,8 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
         /// <summary>
         /// Initializes a new instance of the <see cref="TfsBuilderActionTrackingAttribute"/> class.
         /// </summary>
-        public TfsBuilderActionTrackingAttribute() : base(
-            (string)AppSettings.Instance.GoogleAnalyticsTrackingId,
-            (string)AppSettings.Instance.GoogleAnalyticsTrackingDomain)
+        public TfsBuilderActionTrackingAttribute()
+            : base((string)AppSettings.Instance.GoogleAnalyticsTrackingId)
         {
         }
     }
