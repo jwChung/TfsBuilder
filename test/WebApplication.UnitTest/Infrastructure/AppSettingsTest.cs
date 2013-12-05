@@ -43,13 +43,12 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
         }
 
         [Spec]
-        public void InstanceDoesNotSupprtSettingValue(string value)
+        public void InstanceDoesNotSupportSettingValue(string value)
         {
             var e = Assert.Throws<RuntimeBinderException>(
                 () => AppSettings.Instance.GoogleAnalyticsTrackingId = value);
 
             Assert.Contains("Supports only read-only properties.", e.Message);
-
         }
     }
 }

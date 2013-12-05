@@ -137,9 +137,9 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
         [InlineData]
         public void BuildWithCommitsExecutesBuildCommandAndReturns404Error(
             [Inject(Matches.SameName)] string payload,  // to parameters
+            [Build] BuildParameters parameters,
             [Inject] ICommand<BuildParameters> buildCommand, // to sut
-            [Build(BuildFlags.NoAutoProperties)] TfsBuilderController sut,
-            [Build] BuildParameters parameters)
+            [Build(BuildFlags.NoAutoProperties)] TfsBuilderController sut)
         {
             var actual = sut.Build(parameters);
 
@@ -162,9 +162,9 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
         [NonCommitData]
         public void BuildWithNoCommitsDoesNotExecuteBulidCommandAndReturns404Error(
             [Inject(Matches.SameName)] string payload,  // to parameters
+            [Build] BuildParameters parameters,
             [Inject] ICommand<BuildParameters> buildCommand, // to sut
-            [Build(BuildFlags.NoAutoProperties)] TfsBuilderController sut,
-            [Build] BuildParameters parameters)
+            [Build(BuildFlags.NoAutoProperties)] TfsBuilderController sut)
         {
             var actual = sut.Build(parameters);
 
@@ -189,10 +189,9 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
         [BuildExceptionData]
         public void BuildShowsMessageOfExceptionThrownFromBuildCommand(
             Exception exception,
-            [Inject(Matches.SameName)] string payload, // to parameters
-            [Inject] ICommand<BuildParameters> buildCommand, // to sut
+            [Inject] ICommand<BuildParameters> buildCommand,
             [Build(BuildFlags.NoAutoProperties)] TfsBuilderController sut,
-            [Build] BuildParameters parameters)
+            BuildParameters parameters)
         {
             Mock.Get(buildCommand).Setup(x => x.Execute(parameters)).Throws(exception);
 
@@ -200,6 +199,18 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
 
             var contentResult = Assert.IsType<ContentResult>(actual);
             Assert.Equal(exception.Message, contentResult.Content);
+        }
+
+        [Spec]
+        public void BuildThrowsAnyExeptionNotDefinedToCatch(
+            InvalidOperationException exception,
+            [Inject] ICommand<BuildParameters> buildCommand,
+            [Build(BuildFlags.NoAutoProperties)] TfsBuilderController sut,
+            BuildParameters parameters)
+        {
+            Mock.Get(buildCommand).Setup(x => x.Execute(parameters)).Throws(exception);
+
+            Assert.Throws(exception.GetType(), () => sut.Build(parameters));
         }
     }
 }
