@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.Dynamic;
 using Microsoft.CSharp.RuntimeBinder;
 
@@ -26,13 +27,18 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
         {
             public override bool TryGetMember(GetMemberBinder binder, out object result)
             {
+                if (binder == null)
+                {
+                    throw new ArgumentNullException("binder");
+                }
+
                 result = ConfigurationManager.AppSettings[binder.Name];
                 return result != null;
             }
 
             public override bool TrySetMember(SetMemberBinder binder, object value)
             {
-                throw new RuntimeBinderException("Supports only read-only properites.");
+                throw new RuntimeBinderException("Supports only read-only properties.");
             }
         }
     }

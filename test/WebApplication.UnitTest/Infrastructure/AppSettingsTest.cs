@@ -48,7 +48,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
             var e = Assert.Throws<RuntimeBinderException>(
                 () => AppSettings.Instance.GoogleAnalyticsTrackingId = value);
 
-            Assert.Contains("Supports only read-only properites.", e.Message);
+            Assert.Contains("Supports only read-only properties.", e.Message);
 
         }
     }
