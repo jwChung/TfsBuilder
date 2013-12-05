@@ -8,7 +8,8 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
     /// An attribute to provide action tracking of Google analytics.
     /// </summary>
     [CLSCompliant(false)]
-    public class TfsBuilderActionTrackingAttribute : ActionTrackingAttribute
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false)]
+    public sealed class TfsBuilderActionTrackingAttribute : ActionTrackingAttribute
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="TfsBuilderActionTrackingAttribute"/> class.
