@@ -3,7 +3,7 @@
 ### Overview ###
 This project is for a service hook to queue a build process on [Visual Studio Online] and is serviced on <http://tfsbuilder.apphb.com/>.
 
-### How to queue a build process ###
+### How to queue a build process on GitHub ###
 1. Open the Service Hooks page of a project on Github.(Settings > Service Hooks)
 2. On the left pane of the page, select the WebHook URLs service.
 3. Add a url as the following form.
