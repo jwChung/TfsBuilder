@@ -183,6 +183,7 @@
     <Compile Include="Infrastructure\NotifyErrorAttribute.cs" />
     <Compile Include="Infrastructure\RequireAppHarborHttpsAttribute.cs" />
     <Compile Include="Infrastructure\TfsBuildCommand.cs" />
+    <Compile Include="Infrastructure\TfsBuilderActionTrackingAttribute.cs" />
     <Compile Include="Infrastructure\TfsBuildException.cs" />
     <Compile Include="Models\BuildParameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

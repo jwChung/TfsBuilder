@@ -129,6 +129,7 @@
     <Compile Include="Infrastructure\NotifyErrorAttributeTest.cs" />
     <Compile Include="Infrastructure\RequireAppHarborHttpsAttributeTest.cs" />
     <Compile Include="Infrastructure\TfsBuildCommandTest.cs" />
+    <Compile Include="Infrastructure\TfsBuilderActionTrackingAttributeTest.cs" />
     <Compile Include="Models\BuildParametersTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReleaseSpecAttribute.cs" />
