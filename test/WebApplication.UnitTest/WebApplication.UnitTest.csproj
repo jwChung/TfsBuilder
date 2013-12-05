@@ -57,6 +57,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\AutoFixture.Contrib.2.6.0\lib\net40\AutoFixture.Contrib.dll</HintPath>
     </Reference>
+    <Reference Include="GoogleAnalyticsTracker">
+      <HintPath>..\..\packages\GoogleAnalyticsTracker.1.7.11\lib\net40\GoogleAnalyticsTracker.dll</HintPath>
+    </Reference>
     <Reference Include="MarkdownSharp">
       <HintPath>..\..\packages\MarkdownSharp.1.13.0.0\lib\35\MarkdownSharp.dll</HintPath>
     </Reference>
