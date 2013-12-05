@@ -11,6 +11,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
     /// <summary>
     /// Represents TFS build controller.
     /// </summary>
+    [TfsBuilderActionTracking]
     public class TfsBuilderController : Controller
     {
         private readonly ICommand<BuildParameters> _buildCommand;

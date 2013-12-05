@@ -23,6 +23,14 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
         }
 
         [Spec]
+        public void SutHasTfsBuilderActionTrackingAttribute()
+        {
+            var actual = typeof(TfsBuilderController).GetCustomAttribute<TfsBuilderActionTrackingAttribute>();
+
+            Assert.NotNull(actual);
+        }
+
+        [Spec]
         [InlineData(null)]
         public void CtorWithNullBuildCommandThrows(
             [Inject] ICommand<BuildParameters> buildCommand,
