@@ -27,7 +27,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
             controllerContext.HttpContext = httpContext;
             sut.ControllerContext = controllerContext;
             
-            const string readmeFilePath = @"..\..\..\..\README.md";
+            const string readmeFilePath = "README.md";
             Mock.Get(httpContext).Setup(x => x.Server.MapPath("~/bin/README.md")).Returns(readmeFilePath);
 
             string markdown;

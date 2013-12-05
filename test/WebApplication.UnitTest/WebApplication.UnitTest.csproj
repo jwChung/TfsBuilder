@@ -131,6 +131,10 @@
     <Compile Include="RouteConfigTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\README.md">
+      <Link>Controllers\README.md</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
