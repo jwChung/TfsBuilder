@@ -4,9 +4,12 @@
 
 <html>
 <head>
+    <title>Visual Studio Online Service Hook</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
+    <h3>Overview</h3>
+    <p>This project is for a service hook to queue a build process on Visual Studio Online and is serviced on <a href="http://tfsbuilder.apphb.com/">http://tfsbuilder.apphb.com/</a>.</p>
     <h3>How to queue a build process</h3>
     <ol>
         <li>Open the Service Hooks page of a project on Github.(Settings > Service Hooks)</li>
@@ -25,7 +28,7 @@ where,
 </code></pre>
         </li>
     </ol>
-    <p><strong>Caution</strong></p>
+    <h3>Caution</h3>
     <ol>
         <li>Your name and password will be secure with using HTTPS(SSL) even if these are sent as query string of the end of usl. However, we recommend to use ALTERNATE AUTHENTICATION CREDENTIALS. (<a href="http://www.visualstudio.com/en-us/get-started/share-your-xcode-projects-vs">Learn more</a>)</li>
         <li>Use the '/' character before the '?' mark to send query string (Do not use as https://tfsbuilder.apphb.com/api/{0}/{1}/{2}?...), which can cause TfsBuilder not to queue your build process to Visual Studio Online.</li>
@@ -35,7 +38,7 @@ where,
         If you have any problem on queuing a build process, you can check out the problem with a test html file.
         First, make a html file having the following content, open the file with a web browser, click the button 'Queue build', and then check out a message on the web page.
     </p>
-<pre><code>&lt;html&gt;
+    <pre><code>&lt;html&gt;
     &lt;head&gt;
         &lt;title&gt;Queue build tester&lt;/title&gt;
     &lt;/head&gt;
@@ -46,4 +49,5 @@ where,
     &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
+</body>
 </html>
