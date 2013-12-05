@@ -14,8 +14,8 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
         /// </summary>
         public ActionResult Index()
         {
-            ViewBag.Body = GetHtmlFromMarkdown(GetMarkdownContent());
-            return View();
+            var html = GetHtmlFromMarkdown(GetMarkdownContent());
+            return View(model: html);
         }
 
         private static string GetHtmlFromMarkdown(string markdown)

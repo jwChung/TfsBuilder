@@ -44,7 +44,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
             // Assert
             var viewResult = Assert.IsAssignableFrom<ViewResult>(actual);
             Assert.Empty(viewResult.ViewName);
-            Assert.Equal(html, viewResult.ViewBag.Body);
+            Assert.Equal(html, viewResult.Model);
         }
     }
 }

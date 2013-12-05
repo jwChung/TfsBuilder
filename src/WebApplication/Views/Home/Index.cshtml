@@ -1,4 +1,5 @@
-﻿@{
+﻿@model string
+@{
     ViewBag.Title = "Visual Studio Online Service Hook";
 }
 
@@ -8,6 +9,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     </head>
     <body>
-        @Html.Raw(ViewBag.Body)
+        @Html.Raw(Model)
     </body>
 </html>
