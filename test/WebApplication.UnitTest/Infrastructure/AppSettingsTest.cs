@@ -39,7 +39,8 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
         [Spec]
         public void InstanceThrowsIfDynamicPropertyDoesNotExist()
         {
-            Assert.Throws<RuntimeBinderException>(() => AppSettings.Instance.InvalidProperty);
+            var e = Assert.Throws<RuntimeBinderException>(() => AppSettings.Instance.InvalidProperty);
+            Assert.Contains("The 'InvalidProperty' app-setting is not defined in the config file.", e.Message);
         }
 
         [Spec]
@@ -48,7 +49,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
             var e = Assert.Throws<RuntimeBinderException>(
                 () => AppSettings.Instance.GoogleAnalyticsTrackingId = value);
 
-            Assert.Contains("Supports only read-only properties.", e.Message);
+            Assert.Contains("AppSettings does not support settings a value.", e.Message);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Dynamic;
+using System.Globalization;
 using Microsoft.CSharp.RuntimeBinder;
 
 namespace Jwc.TfsBuilder.WebApplication.Infrastructure
@@ -33,12 +34,20 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
                 }
 
                 result = ConfigurationManager.AppSettings[binder.Name];
-                return result != null;
+                if (result != null)
+                {
+                    return true;
+                }
+
+                throw new RuntimeBinderException(string.Format(
+                    CultureInfo.CurrentCulture,
+                    "The '{0}' app-setting is not defined in the config file.",
+                    binder.Name));
             }
 
             public override bool TrySetMember(SetMemberBinder binder, object value)
             {
-                throw new RuntimeBinderException("Supports only read-only properties.");
+                throw new RuntimeBinderException("AppSettings does not support settings a value.");
             }
         }
     }
