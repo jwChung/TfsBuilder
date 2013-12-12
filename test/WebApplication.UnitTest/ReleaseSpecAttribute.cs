@@ -1,4 +1,4 @@
-﻿#if !CODE_ANALYSIS
+﻿#if !RELEASE
 using System;
 #endif
 using Jwc.AutoFixture.Xunit;
@@ -7,7 +7,7 @@ namespace Jwc.TfsBuilder.WebApplication
 {
     public class ReleaseSpecAttribute : SpecAttribute
     {
-#if !CODE_ANALYSIS
+#if !RELEASE
         public override string Skip
         {
             get
