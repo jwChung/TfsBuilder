@@ -38,9 +38,22 @@ and then check out a message on the web page.
             <title>Queue build tester</title>
         </head>
         <body>
-            <form action="https://tfsbuilder.apphb.com/api/{0}/{1}/{2}/?username={3}&password={4}&payload=dummy" method="POST">
-                <input type="submit" value="Queue build" />
+            <form action="https://tfsbuilder.apphb.com/api/{0}/{1}/{2}/" method="POST">
+                <input type="hidden" name="username" value="{3}" />
+                <input type="hidden" name="password" value="{4}" />
+                <input type="hidden" name="payload" value="dummy" />
+                <input type="submit" value="Queue build" />	
             </form>
+            <!--
+                where,
+                {0}: An account name of visual studio online,
+                     which is the '{0}' part of https://{0}.visualstudio.com
+                {1}: An project name in the account,
+                     which is the '{1}' part of https://{0}.visualstudio.com/DefaultCollection/{1}
+                {2}: An build definition name of the project, which you need to create on the online.
+                {3}: Your credential name on the online.
+                {4}: Your credential password on the online.
+            -->
         </body>
     </html>
 
