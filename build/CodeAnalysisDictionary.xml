@@ -10,6 +10,7 @@
       <Word>AutoFixture</Word>
       <Word>PayLoad</Word>
       <Word>Api</Word>
+      <Word>AppSettings</Word>
     </Recognized>
     <Unrecognized>
       <Word></Word>
@@ -19,6 +20,7 @@
     </Deprecated>
     <Compound>
       <Term CompoundAlternate="PayLoad">Payload</Term>
+      <Term CompoundAlternate="AppSettings">Appsettings</Term>
     </Compound>
     <DiscreteExceptions>
       <Term></Term>
