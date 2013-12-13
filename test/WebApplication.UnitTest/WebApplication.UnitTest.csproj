@@ -39,6 +39,7 @@
     </DocumentationFile>
     <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis>false</RunCodeAnalysis>
+    <NoWarn>1692</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AutoFixture.Contrib, Version=2.6.0.0, Culture=neutral, PublicKeyToken=db4e4bc25029966c, processorArchitecture=MSIL">
