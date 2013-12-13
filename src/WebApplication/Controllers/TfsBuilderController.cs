@@ -69,7 +69,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
                 return Content(GetInvalidModelStateMessage());
             }
 
-            if (!HasCommits(parameters.PayLoad))
+            if (!TriggersBuild(parameters.PayLoad))
             {
                 return Content("There are no commits to queue a build process.");
             }
@@ -83,9 +83,14 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
             return string.Join(Environment.NewLine, errorMessages);
         }
 
-        private static bool HasCommits(string payload)
+        private static bool TriggersBuild(string payload)
         {
-            return !payload.Contains("\"commits\":[]");
+            if (payload == "dummy")
+            {
+                return true;
+            }
+
+            return !IsTagging(payload);
         }
 
         private string GetBuildResult(BuildParameters parameters)
@@ -116,6 +121,13 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
             }
 
             return "Just have queued a new build process.";
+        }
+
+        private static bool IsTagging(string payload)
+        {
+            dynamic payloadJson = System.Web.Helpers.Json.Decode(payload);
+            const string blank = "0000000000000000000000000000000000000000";
+            return payloadJson.commits.Length == 0 && (payloadJson.after == blank || payloadJson.before == blank);
         }
     }
 }
