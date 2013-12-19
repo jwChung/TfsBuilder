@@ -10,7 +10,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
     public class TfsBuildCommandTest
     {
         [Spec]
-        public void SutIsCommandOfBuildParameters(TfsBuildCommand sut)
+        public void IsCommandOfBuildParameters(TfsBuildCommand sut)
         {
             Assert.IsAssignableFrom<ICommand<BuildParameters>>(sut);
         }
@@ -86,7 +86,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
         }
 
         [Spec(Skip = "To run this test, set build information below and run this test explicitly.")]
-        public void ExecuteWithValidParametersCreatesQueueBuild(TfsBuildCommand sut)
+        public void ExecuteQueuesBuildProcess(TfsBuildCommand sut)
         {
             var parameters = CreateValidBuildParameters();
 

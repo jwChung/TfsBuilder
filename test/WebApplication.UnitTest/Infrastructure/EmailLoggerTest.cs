@@ -7,7 +7,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
     public class EmailLoggerTest
     {
         [Spec]
-        public void SutIsLogger(EmailLogger sut)
+        public void IsLogger(EmailLogger sut)
         {
             Assert.IsAssignableFrom<ILogger>(sut);
         }

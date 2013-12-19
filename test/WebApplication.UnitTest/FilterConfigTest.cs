@@ -9,7 +9,7 @@ namespace Jwc.TfsBuilder.WebApplication
     public class FilterConfigTest
     {
         [Spec]
-        public void RegisterGlobalFiltersRegistersCorrectFilters(GlobalFilterCollection filters)
+        public void RegistersCorrectGlobalFilters(GlobalFilterCollection filters)
         {
             Assert.Empty(filters);
 
@@ -21,7 +21,7 @@ namespace Jwc.TfsBuilder.WebApplication
         }
 
         [Spec]
-        public void RegisterGlobalFiltersRegistersCorrectNotifyErrorAttribute(
+        public void RegistersCorrectNotifyErrorAttribute(
             GlobalFilterCollection filters)
         {
             // Arrange

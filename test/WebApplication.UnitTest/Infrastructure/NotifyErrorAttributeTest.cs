@@ -11,20 +11,20 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
     public class NotifyErrorAttributeTest
     {
         [Spec]
-        public void SutIsFilterAttribute(NotifyErrorAttribute sut)
+        public void IsFilterAttribute(NotifyErrorAttribute sut)
         {
             Assert.IsAssignableFrom<FilterAttribute>(sut);
         }
 
         [Spec]
-        public void SutIsExceptionFilter(NotifyErrorAttribute sut)
+        public void IsExceptionFilter(NotifyErrorAttribute sut)
         {
             Assert.IsAssignableFrom<IExceptionFilter>(sut);
         }
 
         [Spec]
         [InlineData(null)]
-        public void CtorWithNullLoggerThrows(
+        public void ConstructWithNullLoggerThrows(
             [Inject] ILogger logger,
             [Build] Lazy<NotifyErrorAttribute> sut)
         {
@@ -34,7 +34,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
         }
 
         [Spec]
-        public void LoggerIsCorrect(
+        public void GetsLogger(
             [Inject] ILogger expected,
             [Build] NotifyErrorAttribute sut)
         {
@@ -51,7 +51,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
         }
         
         [Spec]
-        public void OnExceptionLogsExceptionMessageAndHandlesException(
+        public void OnExceptionLogsAndHandlesException(
             Exception exception,
             [Inject] ILogger logger,
             [Build] NotifyErrorAttribute sut)

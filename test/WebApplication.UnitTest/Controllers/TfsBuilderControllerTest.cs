@@ -16,14 +16,14 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
     public class TfsBuilderControllerTest
     {
         [Spec]
-        public void SutIsController(
+        public void IsController(
             [Build(BuildFlags.NoAutoProperties)] TfsBuilderController sut)
         {
             Assert.IsAssignableFrom<Controller>(sut);
         }
 
         [Spec]
-        public void SutHasTfsBuilderActionTrackingAttribute()
+        public void HasTfsBuilderActionTrackingAttribute()
         {
             var actual = typeof(TfsBuilderController).GetCustomAttribute<TfsBuilderActionTrackingAttribute>();
 
@@ -32,7 +32,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
 
         [Spec]
         [InlineData(null)]
-        public void CtorWithNullBuildCommandThrows(
+        public void ConstructWithNullBuildCommandThrows(
             [Inject] ICommand<BuildParameters> buildCommand,
             [Build] Lazy<TfsBuilderController> sut)
         {
@@ -42,7 +42,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
         }
 
         [Spec]
-        public void BuildCommandIsCorrect(
+        public void GetsBuildCommand(
             [Build(BuildFlags.NoAutoProperties)] TfsBuilderController sut)
         {
             var actual = sut.BuildCommand;
@@ -51,7 +51,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
         }
 
         [Spec]
-        public void BuildCommandFromGreedyIsCorrect(
+        public void GetsBuildCommandFromGreedy(
             [Inject] ICommand<BuildParameters> expected,
             [Build(BuildFlags.NoAutoProperties)] TfsBuilderController sut)
         {
@@ -104,7 +104,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
         }
 
         [Spec]
-        public void BuildWithInvalidBuildParametersShowErroMessagesOnWebPage(
+        public void BuildWithInvalidBuildParametersShowsErrorMessages(
             [Build(BuildFlags.NoAutoProperties)] TfsBuilderController sut,
             BuildParameters parameters,
             string expected1,
@@ -137,7 +137,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
 
         [Spec]
         [CommitData]
-        public void BuildWithCommitsExecutesBuildCommandAndReturns404Error(
+        public void BuildWithCommitsExecutesBuildCommandAndReturnsCorrectMessage(
             [Inject(Matches.SameName)] string payload,  // to parameters
             [Build] BuildParameters parameters,
             [Inject] ICommand<BuildParameters> buildCommand, // to sut
@@ -161,7 +161,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
 
         [Spec]
         [NonCommitData]
-        public void BuildWithNoCommitsDoesNotExecuteBulidCommandAndReturns404Error(
+        public void BuildWithNoCommitsDoesNotExecuteBulidCommandAndReturnsCorrectMessage(
             [Inject(Matches.SameName)] string payload,  // to parameters
             [Build] BuildParameters parameters,
             [Inject] ICommand<BuildParameters> buildCommand, // to sut
@@ -204,7 +204,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
         }
 
         [Spec]
-        public void BuildThrowsAnyExeptionNotDefinedToCatch(
+        public void BuildThrowsAnyExeptionNotCatched(
             InvalidOperationException exception,
             [Inject] ICommand<BuildParameters> buildCommand,
             [Build(BuildFlags.NoAutoProperties)] TfsBuilderController sut,

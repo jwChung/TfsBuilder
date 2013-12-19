@@ -11,7 +11,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
     public class RequireAppHarborHttpsAttributeTest
     {
         [Spec]
-        public void SutIsRequireHttpsAttribute(RequireAppHarborHttpsAttribute sut)
+        public void IsRequireHttpsAttribute(RequireAppHarborHttpsAttribute sut)
         {
             Assert.IsAssignableFrom<RequireHttpsAttribute>(sut);
         }
@@ -25,7 +25,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
         }
 
         [Spec]
-        public void OnAuthorizationDoesNotThrowIfIsSecureConnectionIsTrue(
+        public void OnAuthorizationWithSecureConnectionDoesNotThrow(
             RequireAppHarborHttpsAttribute sut,
             [Build(BuildFlags.ForceMocked)] AuthorizationContext filterContext)
         {
@@ -39,7 +39,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
         [InlineData("https")]
         [InlineData("HTTPS")]
         [InlineData("Https")]
-        public void OnAuthorizationDoesNotThrowIfXForwardedProtocolIsHttps(
+        public void OnAuthorizationWithXForwardedProtocolAsHttpsDoesNotThrow(
             string value,
             RequireAppHarborHttpsAttribute sut,
             [Build(BuildFlags.ForceMocked)] AuthorizationContext filterContext)
@@ -52,7 +52,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
         }
 
         [Spec]
-        public void OnAuthorizationDoesNotThrowIfRequestIsLocal(
+        public void OnAuthorizationWithLocalRequestDoesNotThrow(
             RequireAppHarborHttpsAttribute sut,
             [Build(BuildFlags.ForceMocked)] AuthorizationContext filterContext)
         {
@@ -63,7 +63,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
         }
 
         [Spec]
-        public void OnAuthorizationThrowsIfRequestIsNotSSL(
+        public void OnAuthorizationWithNonSSLRequestThrows(
             RequireAppHarborHttpsAttribute sut,
             [Build(BuildFlags.ForceMocked)] AuthorizationContext filterContext)
         {

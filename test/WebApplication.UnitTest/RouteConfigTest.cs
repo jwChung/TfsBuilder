@@ -11,7 +11,7 @@ namespace Jwc.TfsBuilder.WebApplication
     public class RouteConfigTest
     {
         [Spec]
-        public void RegisterRoutesRegistersCorrectBuildRoute(
+        public void RegistersCorrectBuildRoute(
             string s1,
             string s2,
             string s3,
@@ -35,7 +35,7 @@ namespace Jwc.TfsBuilder.WebApplication
         [InlineData("~/Home")]
         [InlineData("~/Home/Index")]
         [InlineData("~/home/index")]
-        public void RegisterRoutesRegistersHomeIndex(
+        public void RegistersHomeIndexRoute(
             string url,
             RouteCollection routes)
         {
@@ -50,7 +50,7 @@ namespace Jwc.TfsBuilder.WebApplication
         }
 
         [Spec]
-        public void RegisterRoutesDoesNotRegistersOtherControllerAndAction(
+        public void DoesNotRegistersAnyOtherRoute(
             string controller,
             string action,
             RouteCollection routes)

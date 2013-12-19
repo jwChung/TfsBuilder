@@ -14,7 +14,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
         }
 
         [Spec]
-        public void AccountIsCorrect(
+        public void GetsAccount(
             [Build(BuildFlags.NoAutoProperties)] BuildParameters sut)
         {
             var actual = sut.Account;
@@ -23,7 +23,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
         }
 
         [Spec]
-        public void AccountSetsCorrectValue(
+        public void SetsAccount(
             [Build(BuildFlags.NoAutoProperties)] BuildParameters sut,
             string value)
         {
@@ -39,7 +39,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
         }
 
         [Spec]
-        public void TeamProjectIsCorrect(
+        public void GetsTeamProject(
             [Build(BuildFlags.NoAutoProperties)] BuildParameters sut)
         {
             var actual = sut.TeamProject;
@@ -48,7 +48,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
         }
 
         [Spec]
-        public void TeamProjectSetsCorrectValue(
+        public void SetsTeamProject(
             [Build(BuildFlags.NoAutoProperties)] BuildParameters sut,
             string value)
         {
@@ -64,7 +64,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
         }
 
         [Spec]
-        public void DefinitionNameIsCorrect(
+        public void GetsDefinitionName(
             [Build(BuildFlags.NoAutoProperties)] BuildParameters sut)
         {
             var actual = sut.DefinitionName;
@@ -73,7 +73,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
         }
 
         [Spec]
-        public void DefinitionNameSetsCorrectValue(
+        public void SetsDefinitionName(
             [Build(BuildFlags.NoAutoProperties)] BuildParameters sut,
             string value)
         {
@@ -89,7 +89,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
         }
 
         [Spec]
-        public void PayLoadIsCorrect(
+        public void GetsPayLoad(
             [Build(BuildFlags.NoAutoProperties)] BuildParameters sut)
         {
             var actual = sut.PayLoad;
@@ -98,7 +98,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
         }
 
         [Spec]
-        public void PayLoadSetsCorrectValue(
+        public void SetsPayLoad(
             [Build(BuildFlags.NoAutoProperties)] BuildParameters sut,
             string value)
         {
@@ -114,7 +114,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
         }
 
         [Spec]
-        public void UserNameIsCorrect(
+        public void GetsUserName(
             [Build(BuildFlags.NoAutoProperties)] BuildParameters sut)
         {
             var actual = sut.UserName;
@@ -123,7 +123,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
         }
 
         [Spec]
-        public void UserNameSetsCorrectValue(
+        public void SetsUserName(
             [Build(BuildFlags.NoAutoProperties)] BuildParameters sut,
             string value)
         {
@@ -139,7 +139,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
         }
 
         [Spec]
-        public void PasswordIsCorrect(
+        public void GetsPassword(
             [Build(BuildFlags.NoAutoProperties)] BuildParameters sut)
         {
             var actual = sut.Password;
@@ -148,7 +148,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
         }
 
         [Spec]
-        public void PasswordSetsCorrectValue(
+        public void GestPassword(
             [Build(BuildFlags.NoAutoProperties)] BuildParameters sut,
             string value)
         {

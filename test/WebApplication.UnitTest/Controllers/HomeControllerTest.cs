@@ -11,7 +11,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
     public class HomeControllerTest
     {
         [Spec]
-        public void SutIsController(
+        public void IsController(
             [Build(BuildFlags.NoAutoProperties)] HomeController sut)
         {
             Assert.IsAssignableFrom<Controller>(sut);
