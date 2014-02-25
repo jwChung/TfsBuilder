@@ -8,14 +8,14 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
     {
         [Spec]
         public void IsActionTrackingAttribute(
-            [Build(BuildFlags.NoAutoProperties)] TfsBuilderActionTrackingAttribute sut)
+            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] TfsBuilderActionTrackingAttribute sut)
         {
             Assert.IsAssignableFrom<ActionTrackingAttribute>(sut);
         }
 
         [Spec]
         public void GetsTrackingAccount(
-            [Build(BuildFlags.NoAutoProperties)] TfsBuilderActionTrackingAttribute sut)
+            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] TfsBuilderActionTrackingAttribute sut)
         {
             var expected = AppSettings.Instance.GoogleAnalyticsTrackingId;
 

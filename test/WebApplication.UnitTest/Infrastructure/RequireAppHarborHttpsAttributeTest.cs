@@ -27,7 +27,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
         [Spec]
         public void OnAuthorizationWithSecureConnectionDoesNotThrow(
             RequireAppHarborHttpsAttribute sut,
-            [Build(BuildFlags.ForceMocked)] AuthorizationContext filterContext)
+            [Build(BuildOptions.Default | BuildOptions.Mocked)] AuthorizationContext filterContext)
         {
             Mock.Get(filterContext).CallBase = false;
             Mock.Get(filterContext).SetupGet(x => x.HttpContext.Request.IsSecureConnection).Returns(true);
@@ -42,7 +42,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
         public void OnAuthorizationWithXForwardedProtocolAsHttpsDoesNotThrow(
             string value,
             RequireAppHarborHttpsAttribute sut,
-            [Build(BuildFlags.ForceMocked)] AuthorizationContext filterContext)
+            [Build(BuildOptions.Default | BuildOptions.Mocked)] AuthorizationContext filterContext)
         {
             Mock.Get(filterContext).CallBase = false;
             var nameValues = new NameValueCollection { { "X-Forwarded-Proto", value } };
@@ -54,7 +54,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
         [Spec]
         public void OnAuthorizationWithLocalRequestDoesNotThrow(
             RequireAppHarborHttpsAttribute sut,
-            [Build(BuildFlags.ForceMocked)] AuthorizationContext filterContext)
+            [Build(BuildOptions.Default | BuildOptions.Mocked)] AuthorizationContext filterContext)
         {
             Mock.Get(filterContext).CallBase = false;
             Mock.Get(filterContext).SetupGet(x => x.HttpContext.Request.IsLocal).Returns(true);
@@ -65,7 +65,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
         [Spec]
         public void OnAuthorizationWithNonSSLRequestThrows(
             RequireAppHarborHttpsAttribute sut,
-            [Build(BuildFlags.ForceMocked)] AuthorizationContext filterContext)
+            [Build(BuildOptions.Default | BuildOptions.Mocked)] AuthorizationContext filterContext)
         {
             Mock.Get(filterContext).CallBase = false;
 

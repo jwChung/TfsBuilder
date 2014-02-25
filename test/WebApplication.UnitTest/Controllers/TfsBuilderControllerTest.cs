@@ -17,7 +17,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
     {
         [Spec]
         public void IsController(
-            [Build(BuildFlags.NoAutoProperties)] TfsBuilderController sut)
+            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] TfsBuilderController sut)
         {
             Assert.IsAssignableFrom<Controller>(sut);
         }
@@ -43,7 +43,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
 
         [Spec]
         public void GetsBuildCommand(
-            [Build(BuildFlags.NoAutoProperties)] TfsBuilderController sut)
+            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] TfsBuilderController sut)
         {
             var actual = sut.BuildCommand;
 
@@ -53,7 +53,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
         [Spec]
         public void GetsBuildCommandFromGreedy(
             [Inject] ICommand<BuildParameters> expected,
-            [Build(BuildFlags.NoAutoProperties)] TfsBuilderController sut)
+            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] TfsBuilderController sut)
         {
             var actual = sut.BuildCommand;
 
@@ -96,7 +96,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
 
         [Spec]
         public void BuildWithNullBuildParametersThrows(
-            [Build(BuildFlags.NoAutoProperties)] TfsBuilderController sut,
+            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] TfsBuilderController sut,
             string payload)
         {
             var e = Assert.Throws<ArgumentNullException>(() => sut.Build(null));
@@ -105,7 +105,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
 
         [Spec]
         public void BuildWithInvalidBuildParametersShowsErrorMessages(
-            [Build(BuildFlags.NoAutoProperties)] TfsBuilderController sut,
+            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] TfsBuilderController sut,
             BuildParameters parameters,
             string expected1,
             string expected2)
@@ -138,10 +138,10 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
         [Spec]
         [CommitData]
         public void BuildWithCommitsExecutesBuildCommandAndReturnsCorrectMessage(
-            [Inject(Matches.SameName)] string payload,  // to parameters
+            [Inject(Matches.Default | Matches.SameName)] string payload,  // to parameters
             [Build] BuildParameters parameters,
             [Inject] ICommand<BuildParameters> buildCommand, // to sut
-            [Build(BuildFlags.NoAutoProperties)] TfsBuilderController sut)
+            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] TfsBuilderController sut)
         {
             var actual = sut.Build(parameters);
 
@@ -162,10 +162,10 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
         [Spec]
         [NonCommitData]
         public void BuildWithNoCommitsDoesNotExecuteBulidCommandAndReturnsCorrectMessage(
-            [Inject(Matches.SameName)] string payload,  // to parameters
+            [Inject(Matches.Default | Matches.SameName)] string payload,  // to parameters
             [Build] BuildParameters parameters,
             [Inject] ICommand<BuildParameters> buildCommand, // to sut
-            [Build(BuildFlags.NoAutoProperties)] TfsBuilderController sut)
+            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] TfsBuilderController sut)
         {
             var actual = sut.Build(parameters);
 
@@ -191,7 +191,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
         public void BuildShowsMessageOfExceptionThrownFromBuildCommand(
             Exception exception,
             [Inject] ICommand<BuildParameters> buildCommand,
-            [Build(BuildFlags.NoAutoProperties)] TfsBuilderController sut,
+            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] TfsBuilderController sut,
             BuildParameters parameters)
         {
             parameters.PayLoad = "dummy";
@@ -207,7 +207,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
         public void BuildThrowsAnyExeptionNotCatched(
             InvalidOperationException exception,
             [Inject] ICommand<BuildParameters> buildCommand,
-            [Build(BuildFlags.NoAutoProperties)] TfsBuilderController sut,
+            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] TfsBuilderController sut,
             BuildParameters parameters)
         {
             parameters.PayLoad = "dummy";

@@ -12,7 +12,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
     {
         [Spec]
         public void IsController(
-            [Build(BuildFlags.NoAutoProperties)] HomeController sut)
+            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] HomeController sut)
         {
             Assert.IsAssignableFrom<Controller>(sut);
         }
@@ -20,8 +20,8 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
         [Spec]
         public void IndexReturnsCorrectViewResult(
             HttpContextBase httpContext,
-            [Build(BuildFlags.NoAutoProperties)] ControllerContext controllerContext,
-            [Build(BuildFlags.NoAutoProperties)] HomeController sut)
+            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] ControllerContext controllerContext,
+            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] HomeController sut)
         {
             // Arrange
             controllerContext.HttpContext = httpContext;

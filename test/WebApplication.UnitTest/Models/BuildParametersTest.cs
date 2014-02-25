@@ -15,7 +15,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
 
         [Spec]
         public void GetsAccount(
-            [Build(BuildFlags.NoAutoProperties)] BuildParameters sut)
+            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut)
         {
             var actual = sut.Account;
             
@@ -24,7 +24,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
 
         [Spec]
         public void SetsAccount(
-            [Build(BuildFlags.NoAutoProperties)] BuildParameters sut,
+            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut,
             string value)
         {
             sut.Account = value;
@@ -40,7 +40,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
 
         [Spec]
         public void GetsTeamProject(
-            [Build(BuildFlags.NoAutoProperties)] BuildParameters sut)
+            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut)
         {
             var actual = sut.TeamProject;
 
@@ -49,7 +49,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
 
         [Spec]
         public void SetsTeamProject(
-            [Build(BuildFlags.NoAutoProperties)] BuildParameters sut,
+            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut,
             string value)
         {
             sut.TeamProject = value;
@@ -65,7 +65,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
 
         [Spec]
         public void GetsDefinitionName(
-            [Build(BuildFlags.NoAutoProperties)] BuildParameters sut)
+            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut)
         {
             var actual = sut.DefinitionName;
 
@@ -74,7 +74,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
 
         [Spec]
         public void SetsDefinitionName(
-            [Build(BuildFlags.NoAutoProperties)] BuildParameters sut,
+            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut,
             string value)
         {
             sut.DefinitionName = value;
@@ -90,7 +90,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
 
         [Spec]
         public void GetsPayLoad(
-            [Build(BuildFlags.NoAutoProperties)] BuildParameters sut)
+            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut)
         {
             var actual = sut.PayLoad;
 
@@ -99,7 +99,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
 
         [Spec]
         public void SetsPayLoad(
-            [Build(BuildFlags.NoAutoProperties)] BuildParameters sut,
+            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut,
             string value)
         {
             sut.PayLoad = value;
@@ -115,7 +115,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
 
         [Spec]
         public void GetsUserName(
-            [Build(BuildFlags.NoAutoProperties)] BuildParameters sut)
+            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut)
         {
             var actual = sut.UserName;
 
@@ -124,7 +124,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
 
         [Spec]
         public void SetsUserName(
-            [Build(BuildFlags.NoAutoProperties)] BuildParameters sut,
+            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut,
             string value)
         {
             sut.UserName = value;
@@ -140,7 +140,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
 
         [Spec]
         public void GetsPassword(
-            [Build(BuildFlags.NoAutoProperties)] BuildParameters sut)
+            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut)
         {
             var actual = sut.Password;
 
@@ -149,7 +149,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
 
         [Spec]
         public void GestPassword(
-            [Build(BuildFlags.NoAutoProperties)] BuildParameters sut,
+            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut,
             string value)
         {
             sut.Password = value;
