@@ -22,7 +22,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
             Assert.Equal("parameters", e.ParamName);
         }
 
-        [ReleaseSpec]
+        [Spec(Skip = "Run this test explicitly as this is slow.")]
         public void ExecuteWithInvalidAccountThrows(TfsBuildCommand sut, string invalidAccount)
         {
             var parameters = CreateValidBuildParameters();
