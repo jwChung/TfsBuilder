@@ -50,7 +50,7 @@ namespace Jwc.TfsBuilder.WebApplication
         }
 
         [Theorem]
-        public void DoesNotRegistersAnyOtherRoute(
+        public void DoesNotRegisterAnyOtherRoute(
             string controller,
             string action,
             RouteCollection routes)
