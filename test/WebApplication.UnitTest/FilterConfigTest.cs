@@ -8,7 +8,7 @@ namespace Jwc.TfsBuilder.WebApplication
 {
     public class FilterConfigTest
     {
-        [Spec]
+        [Theorem]
         public void RegistersCorrectGlobalFilters(GlobalFilterCollection filters)
         {
             Assert.Empty(filters);
@@ -20,7 +20,7 @@ namespace Jwc.TfsBuilder.WebApplication
                 filters.Select(x => x.Instance.GetType()));
         }
 
-        [Spec]
+        [Theorem]
         public void RegistersCorrectNotifyErrorAttribute(
             GlobalFilterCollection filters)
         {

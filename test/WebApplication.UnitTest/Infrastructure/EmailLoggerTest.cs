@@ -6,13 +6,13 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
 {
     public class EmailLoggerTest
     {
-        [Spec]
+        [Theorem]
         public void IsLogger(EmailLogger sut)
         {
             Assert.IsAssignableFrom<ILogger>(sut);
         }
 
-        [Spec]
+        [Theorem]
         public void LogWithNullSubjectThrows(EmailLogger sut, string body)
         {
             var e = Assert.Throws<ArgumentNullException>(() => sut.Log(null, body));
@@ -20,7 +20,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
             Assert.Equal("subject", e.ParamName);
         }
 
-        [Spec]
+        [Theorem]
         public void LogWithNullBodyThrows(EmailLogger sut, string subject)
         {
             var e = Assert.Throws<ArgumentNullException>(() => sut.Log(subject, null));
@@ -28,7 +28,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
             Assert.Equal("body", e.ParamName);
         }
 
-        [Spec(Skip = "First, to run this test, set id and password in app.config and run this test explicitly.")]
+        [Theorem(Skip = "First, to run this test, set id and password in app.config and run this test explicitly.")]
         public void LogWithValidParametersSendsEmail(EmailLogger sut, string subject, string message)
         {
             sut.Log(subject, message);

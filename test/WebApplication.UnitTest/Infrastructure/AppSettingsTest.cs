@@ -7,7 +7,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
 {
     public class AppSettingsTest
     {
-        [Spec]
+        [Theorem]
         public void InstanceIsSingleton()
         {
             var actual = AppSettings.Instance;
@@ -16,7 +16,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
             Assert.Same(AppSettings.Instance, actual);
         }
 
-        [Spec]
+        [Theorem]
         public void InstanceHasGmailIdAsDynamic()
         {
             var expected = ConfigurationManager.AppSettings["GmailId"];
@@ -26,7 +26,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
             Assert.Equal(expected, actual);
         }
 
-        [Spec]
+        [Theorem]
         public void InstanceHasGoogleAnalyticsTrackingIdAsDynamic()
         {
             var expected = ConfigurationManager.AppSettings["GoogleAnalyticsTrackingId"];
@@ -36,14 +36,14 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
             Assert.Equal(expected, actual);
         }
 
-        [Spec]
+        [Theorem]
         public void InstanceThrowsIfDynamicPropertyDoesNotExist()
         {
             var e = Assert.Throws<RuntimeBinderException>(() => AppSettings.Instance.InvalidProperty);
             Assert.Contains("The 'InvalidProperty' app-setting is not defined in the config file.", e.Message);
         }
 
-        [Spec]
+        [Theorem]
         public void InstanceDoesNotSupportSettingValue(string value)
         {
             var e = Assert.Throws<RuntimeBinderException>(

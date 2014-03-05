@@ -6,14 +6,14 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
 {
     public class TfsBuilderActionTrackingAttributeTest
     {
-        [Spec]
+        [Theorem]
         public void IsActionTrackingAttribute(
             [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] TfsBuilderActionTrackingAttribute sut)
         {
             Assert.IsAssignableFrom<ActionTrackingAttribute>(sut);
         }
 
-        [Spec]
+        [Theorem]
         public void GetsTrackingAccount(
             [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] TfsBuilderActionTrackingAttribute sut)
         {

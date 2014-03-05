@@ -10,19 +10,19 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
 {
     public class NotifyErrorAttributeTest
     {
-        [Spec]
+        [Theorem]
         public void IsFilterAttribute(NotifyErrorAttribute sut)
         {
             Assert.IsAssignableFrom<FilterAttribute>(sut);
         }
 
-        [Spec]
+        [Theorem]
         public void IsExceptionFilter(NotifyErrorAttribute sut)
         {
             Assert.IsAssignableFrom<IExceptionFilter>(sut);
         }
 
-        [Spec]
+        [Theorem]
         [InlineData(null)]
         public void ConstructWithNullLoggerThrows(
             [Inject] ILogger logger,
@@ -33,7 +33,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
             Assert.Equal("logger", inner.ParamName);
         }
 
-        [Spec]
+        [Theorem]
         public void GetsLogger(
             [Inject] ILogger expected,
             [Build] NotifyErrorAttribute sut)
@@ -43,14 +43,14 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
             Assert.Equal(expected, actual);
         }
 
-        [Spec]
+        [Theorem]
         public void OnExceptionWithNullFilterContextThrows(NotifyErrorAttribute sut)
         {
             var e = Assert.Throws<ArgumentNullException>(() => sut.OnException(null));
             Assert.Equal("filterContext", e.ParamName);
         }
         
-        [Spec]
+        [Theorem]
         public void OnExceptionLogsAndHandlesException(
             Exception exception,
             [Inject] ILogger logger,

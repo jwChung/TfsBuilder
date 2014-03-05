@@ -10,14 +10,14 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
 {
     public class HomeControllerTest
     {
-        [Spec]
+        [Theorem]
         public void IsController(
             [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] HomeController sut)
         {
             Assert.IsAssignableFrom<Controller>(sut);
         }
 
-        [Spec]
+        [Theorem]
         public void IndexReturnsCorrectViewResult(
             HttpContextBase httpContext,
             [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] ControllerContext controllerContext,

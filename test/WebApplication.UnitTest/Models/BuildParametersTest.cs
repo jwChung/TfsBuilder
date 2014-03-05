@@ -7,13 +7,13 @@ namespace Jwc.TfsBuilder.WebApplication.Models
 {
     public class BuildParametersTest
     {
-        [Spec]
+        [Theorem]
         public void AccountHasRequiredAttribute()
         {
             AssertToHaveRequiredAttribute("Account");
         }
 
-        [Spec]
+        [Theorem]
         public void AccountIsNull(
             [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut)
         {
@@ -21,7 +21,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
             Assert.Null(actual);
         }
 
-        [Spec]
+        [Theorem]
         public void AccountReturnsSetValue(
             [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut,
             string value)
@@ -31,13 +31,13 @@ namespace Jwc.TfsBuilder.WebApplication.Models
             Assert.Equal(value, actual);
         }
 
-        [Spec]
+        [Theorem]
         public void TeamProjectHasRequiredAttribute()
         {
             AssertToHaveRequiredAttribute("TeamProject");
         }
 
-        [Spec]
+        [Theorem]
         public void TeamProjectIsNull(
             [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut)
         {
@@ -46,7 +46,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
             Assert.Null(actual);
         }
 
-        [Spec]
+        [Theorem]
         public void TeamProjectReturnsSetValue(
             [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut,
             string value)
@@ -56,13 +56,13 @@ namespace Jwc.TfsBuilder.WebApplication.Models
             Assert.Equal(value, actual);
         }
 
-        [Spec]
+        [Theorem]
         public void DefinitionNameHasRequiredAttribute()
         {
             AssertToHaveRequiredAttribute("DefinitionName");
         }
 
-        [Spec]
+        [Theorem]
         public void DefinitionNameIsNull(
             [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut)
         {
@@ -70,7 +70,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
             Assert.Null(actual);
         }
 
-        [Spec]
+        [Theorem]
         public void DefinitionNameReturnsSetValue(
             [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut,
             string value)
@@ -80,13 +80,13 @@ namespace Jwc.TfsBuilder.WebApplication.Models
             Assert.Equal(value, actual);
         }
 
-        [Spec]
+        [Theorem]
         public void PayLoadHasRequiredAttribute()
         {
             AssertToHaveRequiredAttribute("PayLoad");
         }
 
-        [Spec]
+        [Theorem]
         public void PayLoadIsNull(
             [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut)
         {
@@ -94,7 +94,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
             Assert.Null(actual);
         }
 
-        [Spec]
+        [Theorem]
         public void PayLoadReturnsSetValue(
             [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut,
             string value)
@@ -104,13 +104,13 @@ namespace Jwc.TfsBuilder.WebApplication.Models
             Assert.Equal(value, actual);
         }
 
-        [Spec]
+        [Theorem]
         public void UserNameHasRequiredAttribute()
         {
             AssertToHaveRequiredAttribute("UserName");
         }
 
-        [Spec]
+        [Theorem]
         public void UserNameIsNull(
             [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut)
         {
@@ -118,7 +118,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
             Assert.Null(actual);
         }
 
-        [Spec]
+        [Theorem]
         public void UserNameReturnsSetValue(
             [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut,
             string value)
@@ -128,13 +128,13 @@ namespace Jwc.TfsBuilder.WebApplication.Models
             Assert.Equal(value, actual);
         }
 
-        [Spec]
+        [Theorem]
         public void PasswordHasRequiredAttribute()
         {
             AssertToHaveRequiredAttribute("Password");
         }
 
-        [Spec]
+        [Theorem]
         public void PasswordIsNull(
             [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut)
         {
@@ -142,7 +142,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
             Assert.Null(actual);
         }
 
-        [Spec]
+        [Theorem]
         public void PasswordReturnsSetValue(
             [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut,
             string value)

@@ -15,14 +15,14 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
 {
     public class TfsBuilderControllerTest
     {
-        [Spec]
+        [Theorem]
         public void IsController(
             [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] TfsBuilderController sut)
         {
             Assert.IsAssignableFrom<Controller>(sut);
         }
 
-        [Spec]
+        [Theorem]
         public void HasTfsBuilderActionTrackingAttribute()
         {
             var actual = typeof(TfsBuilderController).GetCustomAttribute<TfsBuilderActionTrackingAttribute>();
@@ -30,7 +30,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
             Assert.NotNull(actual);
         }
 
-        [Spec]
+        [Theorem]
         [InlineData(null)]
         public void ConstructWithNullBuildCommandThrows(
             [Inject] ICommand<BuildParameters> buildCommand,
@@ -41,7 +41,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
             Assert.Equal("buildCommand", inner.ParamName);
         }
 
-        [Spec]
+        [Theorem]
         public void GetsBuildCommand(
             [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] TfsBuilderController sut)
         {
@@ -50,7 +50,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
             Assert.IsType<TfsBuildCommand>(actual);
         }
 
-        [Spec]
+        [Theorem]
         public void GetsBuildCommandFromGreedy(
             [Inject] ICommand<BuildParameters> expected,
             [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] TfsBuilderController sut)
@@ -60,7 +60,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
             Assert.Equal(expected, actual);
         }
 
-        [Spec]
+        [Theorem]
         public void BuildHasCorrectHttpPostAttribute()
         {
             var method = typeof(TfsBuilderController).GetMethod("Build");
@@ -71,7 +71,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
             Assert.NotNull(actual);
         }
 
-        [Spec]
+        [Theorem]
         public void BuildHasCorrectValidateInputAttribute()
         {
             var method = typeof(TfsBuilderController).GetMethod("Build");
@@ -83,7 +83,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
             Assert.False(actual.EnableValidation, "EnableValidation");
         }
 
-        [Spec]
+        [Theorem]
         public void BuildHasCorrectRequireHttpsAttribute()
         {
             var method = typeof(TfsBuilderController).GetMethod("Build");
@@ -94,7 +94,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
             Assert.NotNull(actual);
         }
 
-        [Spec]
+        [Theorem]
         public void BuildWithNullBuildParametersThrows(
             [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] TfsBuilderController sut,
             string payload)
@@ -103,7 +103,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
             Assert.Equal("parameters", e.ParamName);
         }
 
-        [Spec]
+        [Theorem]
         public void BuildWithInvalidBuildParametersShowsErrorMessages(
             [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] TfsBuilderController sut,
             BuildParameters parameters,
@@ -135,7 +135,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
             }
         }
 
-        [Spec]
+        [Theorem]
         [CommitData]
         public void BuildWithCommitsExecutesBuildCommandAndReturnsCorrectMessage(
             [Inject(Matches.Default | Matches.SameName)] string payload,  // to parameters
@@ -159,7 +159,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
             }
         }
 
-        [Spec]
+        [Theorem]
         [NonCommitData]
         public void BuildWithNoCommitsDoesNotExecuteBulidCommandAndReturnsCorrectMessage(
             [Inject(Matches.Default | Matches.SameName)] string payload,  // to parameters
@@ -186,7 +186,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
             }
         }
 
-        [Spec]
+        [Theorem]
         [BuildExceptionData]
         public void BuildShowsMessageOfExceptionThrownFromBuildCommand(
             Exception exception,
@@ -203,7 +203,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
             Assert.Equal(exception.Message, contentResult.Content);
         }
 
-        [Spec]
+        [Theorem]
         public void BuildThrowsAnyExeptionNotCatched(
             InvalidOperationException exception,
             [Inject] ICommand<BuildParameters> buildCommand,

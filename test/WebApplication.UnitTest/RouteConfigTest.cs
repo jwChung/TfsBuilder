@@ -10,7 +10,7 @@ namespace Jwc.TfsBuilder.WebApplication
 {
     public class RouteConfigTest
     {
-        [Spec]
+        [Theorem]
         public void RegistersCorrectBuildRoute(
             string s1,
             string s2,
@@ -30,7 +30,7 @@ namespace Jwc.TfsBuilder.WebApplication
             Assert.Equal(s3, routeData.Values["definitionName"]);
         }
 
-        [Spec]
+        [Theorem]
         [InlineData("~/")]
         [InlineData("~/Home")]
         [InlineData("~/Home/Index")]
@@ -49,7 +49,7 @@ namespace Jwc.TfsBuilder.WebApplication
             Assert.Equal("Index", (string)routeData.Values["action"], stringComparer);
         }
 
-        [Spec]
+        [Theorem]
         public void DoesNotRegistersAnyOtherRoute(
             string controller,
             string action,

@@ -10,13 +10,13 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
 {
     public class RequireAppHarborHttpsAttributeTest
     {
-        [Spec]
+        [Theorem]
         public void IsRequireHttpsAttribute(RequireAppHarborHttpsAttribute sut)
         {
             Assert.IsAssignableFrom<RequireHttpsAttribute>(sut);
         }
 
-        [Spec]
+        [Theorem]
         public void OnAuthorizationWithNullFilterContextThrows(
             RequireAppHarborHttpsAttribute sut)
         {
@@ -24,7 +24,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
             Assert.Equal("filterContext", e.ParamName);
         }
 
-        [Spec]
+        [Theorem]
         public void OnAuthorizationWithSecureConnectionDoesNotThrow(
             RequireAppHarborHttpsAttribute sut,
             [Build(BuildOptions.Default | BuildOptions.Mocked)] AuthorizationContext filterContext)
@@ -35,7 +35,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
             Assert.DoesNotThrow(() => sut.OnAuthorization(filterContext));
         }
 
-        [Spec]
+        [Theorem]
         [InlineData("https")]
         [InlineData("HTTPS")]
         [InlineData("Https")]
@@ -51,7 +51,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
             Assert.DoesNotThrow(() => sut.OnAuthorization(filterContext));
         }
 
-        [Spec]
+        [Theorem]
         public void OnAuthorizationWithLocalRequestDoesNotThrow(
             RequireAppHarborHttpsAttribute sut,
             [Build(BuildOptions.Default | BuildOptions.Mocked)] AuthorizationContext filterContext)
@@ -62,7 +62,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
             Assert.DoesNotThrow(() => sut.OnAuthorization(filterContext));
         }
 
-        [Spec]
+        [Theorem]
         public void OnAuthorizationWithNonSSLRequestThrows(
             RequireAppHarborHttpsAttribute sut,
             [Build(BuildOptions.Default | BuildOptions.Mocked)] AuthorizationContext filterContext)

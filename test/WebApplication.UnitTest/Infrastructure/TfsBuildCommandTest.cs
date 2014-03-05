@@ -9,20 +9,20 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
 {
     public class TfsBuildCommandTest
     {
-        [Spec]
+        [Theorem]
         public void IsCommandOfBuildParameters(TfsBuildCommand sut)
         {
             Assert.IsAssignableFrom<ICommand<BuildParameters>>(sut);
         }
 
-        [Spec]
+        [Theorem]
         public void ExecuteWithNullParametersThrows(TfsBuildCommand sut)
         {
             var e = Assert.Throws<ArgumentNullException>(() => sut.Execute(null));
             Assert.Equal("parameters", e.ParamName);
         }
 
-        [Spec(Skip = "Run this test explicitly as this is slow.")]
+        [Theorem(Skip = "Run this test explicitly as this is slow.")]
         public void ExecuteWithInvalidAccountThrows(TfsBuildCommand sut, string invalidAccount)
         {
             var parameters = CreateValidBuildParameters();
@@ -34,7 +34,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
                 e.Message);
         }
 
-        [Spec(Skip = "To run this test, set build information below and run this test explicitly.")]
+        [Theorem(Skip = "To run this test, set build information below and run this test explicitly.")]
         public void ExecuteWithInvalidTeamProjectThrows(TfsBuildCommand sut, string invalidTeamProject)
         {
             var parameters = CreateValidBuildParameters();
@@ -46,7 +46,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
                 e.Message);
         }
 
-        [Spec(Skip = "To run this test, set build information below and run this test explicitly.")]
+        [Theorem(Skip = "To run this test, set build information below and run this test explicitly.")]
         public void ExecuteWithInvalidDefinitionNameThrows(TfsBuildCommand sut, string invalidDefinitionName)
         {
             var parameters = CreateValidBuildParameters();
@@ -61,7 +61,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
                 e.Message);
         }
 
-        [Spec(Skip = "To run this test, set build information below and run this test explicitly.")]
+        [Theorem(Skip = "To run this test, set build information below and run this test explicitly.")]
         public void ExecuteWithInvalidUserNameThrows(TfsBuildCommand sut, string invalidUserName)
         {
             var parameters = CreateValidBuildParameters();
@@ -73,7 +73,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
                 e.Message);
         }
 
-        [Spec(Skip = "To run this test, set build information below and run this test explicitly.")]
+        [Theorem(Skip = "To run this test, set build information below and run this test explicitly.")]
         public void ExecuteWithInvalidPasswordThrows(TfsBuildCommand sut, string invalidPassword)
         {
             var parameters = CreateValidBuildParameters();
@@ -85,7 +85,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
                 e.Message);
         }
 
-        [Spec(Skip = "To run this test, set build information below and run this test explicitly.")]
+        [Theorem(Skip = "To run this test, set build information below and run this test explicitly.")]
         public void ExecuteQueuesBuildProcess(TfsBuildCommand sut)
         {
             var parameters = CreateValidBuildParameters();
