@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web.Mvc;
 using GoogleAnalyticsTracker.Web.Mvc;
 
 namespace Jwc.TfsBuilder.WebApplication.Infrastructure
@@ -16,6 +17,21 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
         public TfsBuilderActionTrackingAttribute()
             : base((string)AppSettings.Instance.GoogleAnalyticsTrackingId)
         {
+        }
+
+        /// <summary>
+        /// Builds the current action URL.
+        /// </summary>
+        /// <param name="filterContext">The filter context.</param>
+        /// <returns></returns>
+        public override string BuildCurrentActionUrl(ActionExecutingContext filterContext)
+        {
+            if (filterContext == null)
+            {
+                throw new ArgumentNullException("filterContext");
+            }
+
+            return base.BuildCurrentActionUrl(filterContext);
         }
     }
 }

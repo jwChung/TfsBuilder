@@ -1,4 +1,5 @@
-﻿using GoogleAnalyticsTracker.Web.Mvc;
+﻿using System;
+using GoogleAnalyticsTracker.Web.Mvc;
 using Ploeh.AutoFixture.Xunit;
 using Xunit;
 
@@ -22,6 +23,13 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
             var actual = sut.Tracker.TrackingAccount;
 
             Assert.Equal(expected, actual);
+        }
+
+        [Theorem]
+        public void BuildCurrentActionUrlWithNullContextThrows(
+            [NoAutoProperties] TfsBuilderActionTrackingAttribute sut)
+        {
+            Assert.Throws<ArgumentNullException>(() => sut.BuildCurrentActionUrl(null));
         }
     }
 }
