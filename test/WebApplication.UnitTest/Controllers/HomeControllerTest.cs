@@ -11,8 +11,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
     public class HomeControllerTest
     {
         [Theorem]
-        public void IsController(
-            [NoAutoProperties] HomeController sut)
+        public void IsController(HomeController sut)
         {
             Assert.IsAssignableFrom<Controller>(sut);
         }
@@ -20,8 +19,8 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
         [Theorem]
         public void IndexReturnsCorrectViewResult(
             HttpContextBase httpContext,
-            [NoAutoProperties] ControllerContext controllerContext,
-            [NoAutoProperties] HomeController sut)
+            ControllerContext controllerContext,
+            HomeController sut)
         {
             // Arrange
             controllerContext.HttpContext = httpContext;

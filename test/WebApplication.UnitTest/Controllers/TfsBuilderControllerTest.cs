@@ -18,8 +18,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
     public class TfsBuilderControllerTest
     {
         [Theorem]
-        public void IsController(
-            [NoAutoProperties] TfsBuilderController sut)
+        public void IsController(TfsBuilderController sut)
         {
             Assert.IsAssignableFrom<Controller>(sut);
         }
@@ -43,8 +42,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
         }
 
         [Theorem]
-        public void GetsBuildCommand(
-            [NoAutoProperties] TfsBuilderController sut)
+        public void GetsBuildCommand(TfsBuilderController sut)
         {
             var actual = sut.BuildCommand;
 
@@ -97,7 +95,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
 
         [Theorem]
         public void BuildWithNullBuildParametersThrows(
-            [NoAutoProperties] TfsBuilderController sut,
+            TfsBuilderController sut,
             string payload)
         {
             var e = Assert.Throws<ArgumentNullException>(() => sut.Build(null));
@@ -106,7 +104,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
 
         [Theorem]
         public void BuildWithInvalidBuildParametersShowsErrorMessages(
-            [NoAutoProperties] TfsBuilderController sut,
+            TfsBuilderController sut,
             BuildParameters parameters,
             string expected1,
             string expected2)

@@ -14,8 +14,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
         }
 
         [Theorem]
-        public void AccountIsNull(
-            [NoAutoProperties] BuildParameters sut)
+        public void AccountIsNull(BuildParameters sut)
         {
             var actual = sut.Account;
             Assert.Null(actual);
@@ -23,7 +22,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
 
         [Theorem]
         public void AccountReturnsSetValue(
-            [NoAutoProperties] BuildParameters sut,
+            BuildParameters sut,
             string value)
         {
             sut.Account = value;
@@ -38,8 +37,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
         }
 
         [Theorem]
-        public void TeamProjectIsNull(
-            [NoAutoProperties] BuildParameters sut)
+        public void TeamProjectIsNull(BuildParameters sut)
         {
             var actual = sut.TeamProject;
 
@@ -48,7 +46,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
 
         [Theorem]
         public void TeamProjectReturnsSetValue(
-            [NoAutoProperties] BuildParameters sut,
+            BuildParameters sut,
             string value)
         {
             sut.TeamProject = value;
@@ -63,8 +61,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
         }
 
         [Theorem]
-        public void DefinitionNameIsNull(
-            [NoAutoProperties] BuildParameters sut)
+        public void DefinitionNameIsNull(BuildParameters sut)
         {
             var actual = sut.DefinitionName;
             Assert.Null(actual);
@@ -72,7 +69,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
 
         [Theorem]
         public void DefinitionNameReturnsSetValue(
-            [NoAutoProperties] BuildParameters sut,
+            BuildParameters sut,
             string value)
         {
             sut.DefinitionName = value;
@@ -87,8 +84,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
         }
 
         [Theorem]
-        public void PayLoadIsNull(
-            [NoAutoProperties] BuildParameters sut)
+        public void PayLoadIsNull(BuildParameters sut)
         {
             var actual = sut.PayLoad;
             Assert.Null(actual);
@@ -96,7 +92,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
 
         [Theorem]
         public void PayLoadReturnsSetValue(
-            [NoAutoProperties] BuildParameters sut,
+            BuildParameters sut,
             string value)
         {
             sut.PayLoad = value;
@@ -111,8 +107,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
         }
 
         [Theorem]
-        public void UserNameIsNull(
-            [NoAutoProperties] BuildParameters sut)
+        public void UserNameIsNull(BuildParameters sut)
         {
             var actual = sut.UserName;
             Assert.Null(actual);
@@ -120,7 +115,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
 
         [Theorem]
         public void UserNameReturnsSetValue(
-            [NoAutoProperties] BuildParameters sut,
+            BuildParameters sut,
             string value)
         {
             sut.UserName = value;
@@ -135,8 +130,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
         }
 
         [Theorem]
-        public void PasswordIsNull(
-            [NoAutoProperties] BuildParameters sut)
+        public void PasswordIsNull(BuildParameters sut)
         {
             var actual = sut.Password;
             Assert.Null(actual);
@@ -144,7 +138,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
 
         [Theorem]
         public void PasswordReturnsSetValue(
-            [NoAutoProperties] BuildParameters sut,
+            BuildParameters sut,
             string value)
         {
             sut.Password = value;

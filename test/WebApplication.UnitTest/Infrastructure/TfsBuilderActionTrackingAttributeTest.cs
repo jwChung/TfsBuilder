@@ -8,15 +8,13 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
     public class TfsBuilderActionTrackingAttributeTest
     {
         [Theorem]
-        public void IsActionTrackingAttribute(
-            [NoAutoProperties] TfsBuilderActionTrackingAttribute sut)
+        public void IsActionTrackingAttribute(TfsBuilderActionTrackingAttribute sut)
         {
             Assert.IsAssignableFrom<ActionTrackingAttribute>(sut);
         }
 
         [Theorem]
-        public void GetsTrackingAccount(
-            [NoAutoProperties] TfsBuilderActionTrackingAttribute sut)
+        public void GetsTrackingAccount(TfsBuilderActionTrackingAttribute sut)
         {
             var expected = AppSettings.Instance.GoogleAnalyticsTrackingId;
 
@@ -26,8 +24,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
         }
 
         [Theorem]
-        public void BuildCurrentActionUrlWithNullContextThrows(
-            [NoAutoProperties] TfsBuilderActionTrackingAttribute sut)
+        public void BuildCurrentActionUrlWithNullContextThrows(TfsBuilderActionTrackingAttribute sut)
         {
             Assert.Throws<ArgumentNullException>(() => sut.BuildCurrentActionUrl(null));
         }
