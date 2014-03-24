@@ -3,7 +3,6 @@ using System.Web;
 using System.Web.Mvc;
 using MarkdownSharp;
 using Moq;
-using Ploeh.AutoFixture.Xunit;
 using Xunit;
 
 namespace Jwc.TfsBuilder.WebApplication.Controllers

@@ -1,6 +1,5 @@
 ﻿using System;
 using GoogleAnalyticsTracker.Web.Mvc;
-using Ploeh.AutoFixture.Xunit;
 using Xunit;
 
 namespace Jwc.TfsBuilder.WebApplication.Infrastructure
