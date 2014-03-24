@@ -31,7 +31,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
                 throw new ArgumentNullException("filterContext");
             }
 
-            return base.BuildCurrentActionUrl(filterContext);
+            return filterContext.RequestContext.HttpContext.Request.Url.AbsolutePath;
         }
     }
 }
