@@ -38,7 +38,9 @@ namespace Jwc.TfsBuilder.WebApplication
 
         private static IFixture CreateFixture()
         {
-            return new Fixture().Customize(new AutoMoqCustomization());
+            var fixture = new Fixture().Customize(new AutoMoqCustomization());
+            fixture.OmitAutoProperties = true;
+            return fixture;
         }
 
         private static void Customize(IFixture fixture, ParameterInfo parameter)
