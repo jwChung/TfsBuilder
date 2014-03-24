@@ -1,5 +1,5 @@
 ﻿using GoogleAnalyticsTracker.Web.Mvc;
-using Jwc.AutoFixture.Xunit;
+using Ploeh.AutoFixture.Xunit;
 using Xunit;
 
 namespace Jwc.TfsBuilder.WebApplication.Infrastructure
@@ -8,14 +8,14 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
     {
         [Theorem]
         public void IsActionTrackingAttribute(
-            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] TfsBuilderActionTrackingAttribute sut)
+            [NoAutoProperties] TfsBuilderActionTrackingAttribute sut)
         {
             Assert.IsAssignableFrom<ActionTrackingAttribute>(sut);
         }
 
         [Theorem]
         public void GetsTrackingAccount(
-            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] TfsBuilderActionTrackingAttribute sut)
+            [NoAutoProperties] TfsBuilderActionTrackingAttribute sut)
         {
             var expected = AppSettings.Instance.GoogleAnalyticsTrackingId;
 

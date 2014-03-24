@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
-using Jwc.AutoFixture.Xunit;
 using Jwc.TfsBuilder.WebApplication.Infrastructure;
 using Xunit;
 

@@ -1,9 +1,9 @@
 ﻿using System.IO;
 using System.Web;
 using System.Web.Mvc;
-using Jwc.AutoFixture.Xunit;
 using MarkdownSharp;
 using Moq;
+using Ploeh.AutoFixture.Xunit;
 using Xunit;
 
 namespace Jwc.TfsBuilder.WebApplication.Controllers
@@ -12,7 +12,7 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
     {
         [Theorem]
         public void IsController(
-            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] HomeController sut)
+            [NoAutoProperties] HomeController sut)
         {
             Assert.IsAssignableFrom<Controller>(sut);
         }
@@ -20,8 +20,8 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
         [Theorem]
         public void IndexReturnsCorrectViewResult(
             HttpContextBase httpContext,
-            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] ControllerContext controllerContext,
-            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] HomeController sut)
+            [NoAutoProperties] ControllerContext controllerContext,
+            [NoAutoProperties] HomeController sut)
         {
             // Arrange
             controllerContext.HttpContext = httpContext;

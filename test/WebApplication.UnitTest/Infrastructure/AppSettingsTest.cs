@@ -1,5 +1,4 @@
 ﻿using System.Configuration;
-using Jwc.AutoFixture.Xunit;
 using Microsoft.CSharp.RuntimeBinder;
 using Xunit;
 

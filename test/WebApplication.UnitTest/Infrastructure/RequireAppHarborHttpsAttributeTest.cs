@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Specialized;
 using System.Web.Mvc;
-using Jwc.AutoFixture.Xunit;
 using Moq;
 using Xunit;
 using Xunit.Extensions;
@@ -27,12 +26,12 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
         [Theorem]
         public void OnAuthorizationWithSecureConnectionDoesNotThrow(
             RequireAppHarborHttpsAttribute sut,
-            [Build(BuildOptions.Default | BuildOptions.Mocked)] AuthorizationContext filterContext)
+            Mock<AuthorizationContext> mockFilterContext)
         {
-            Mock.Get(filterContext).CallBase = false;
-            Mock.Get(filterContext).SetupGet(x => x.HttpContext.Request.IsSecureConnection).Returns(true);
+            mockFilterContext.CallBase = false;
+            mockFilterContext.SetupGet(x => x.HttpContext.Request.IsSecureConnection).Returns(true);
 
-            Assert.DoesNotThrow(() => sut.OnAuthorization(filterContext));
+            Assert.DoesNotThrow(() => sut.OnAuthorization(mockFilterContext.Object));
         }
 
         [Theorem]
@@ -42,34 +41,34 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
         public void OnAuthorizationWithXForwardedProtocolAsHttpsDoesNotThrow(
             string value,
             RequireAppHarborHttpsAttribute sut,
-            [Build(BuildOptions.Default | BuildOptions.Mocked)] AuthorizationContext filterContext)
+            Mock<AuthorizationContext> mockFilterContext)
         {
-            Mock.Get(filterContext).CallBase = false;
+            mockFilterContext.CallBase = false;
             var nameValues = new NameValueCollection { { "X-Forwarded-Proto", value } };
-            Mock.Get(filterContext).SetupGet(x => x.HttpContext.Request.Headers).Returns(nameValues);
+            mockFilterContext.SetupGet(x => x.HttpContext.Request.Headers).Returns(nameValues);
 
-            Assert.DoesNotThrow(() => sut.OnAuthorization(filterContext));
+            Assert.DoesNotThrow(() => sut.OnAuthorization(mockFilterContext.Object));
         }
 
         [Theorem]
         public void OnAuthorizationWithLocalRequestDoesNotThrow(
             RequireAppHarborHttpsAttribute sut,
-            [Build(BuildOptions.Default | BuildOptions.Mocked)] AuthorizationContext filterContext)
+            Mock<AuthorizationContext> mockFilterContext)
         {
-            Mock.Get(filterContext).CallBase = false;
-            Mock.Get(filterContext).SetupGet(x => x.HttpContext.Request.IsLocal).Returns(true);
+            mockFilterContext.CallBase = false;
+            mockFilterContext.SetupGet(x => x.HttpContext.Request.IsLocal).Returns(true);
 
-            Assert.DoesNotThrow(() => sut.OnAuthorization(filterContext));
+            Assert.DoesNotThrow(() => sut.OnAuthorization(mockFilterContext.Object));
         }
 
         [Theorem]
         public void OnAuthorizationWithNonSSLRequestThrows(
             RequireAppHarborHttpsAttribute sut,
-            [Build(BuildOptions.Default | BuildOptions.Mocked)] AuthorizationContext filterContext)
+            Mock<AuthorizationContext> mockFilterContext)
         {
-            Mock.Get(filterContext).CallBase = false;
+            mockFilterContext.CallBase = false;
 
-            var e = Assert.Throws<InvalidOperationException>(() => sut.OnAuthorization(filterContext));
+            var e = Assert.Throws<InvalidOperationException>(() => sut.OnAuthorization(mockFilterContext.Object));
             Assert.Contains("The requested resource can only be accessed via SSL", e.Message);
         }
     }

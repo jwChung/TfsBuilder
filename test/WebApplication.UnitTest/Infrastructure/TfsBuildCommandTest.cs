@@ -1,5 +1,4 @@
 ﻿using System;
-using Jwc.AutoFixture.Xunit;
 using Jwc.TfsBuilder.WebApplication.Models;
 using Microsoft.TeamFoundation;
 using Microsoft.TeamFoundation.Framework.Client;

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Reflection;
-using Jwc.AutoFixture.Xunit;
+using Ploeh.AutoFixture.Xunit;
 using Xunit;
 
 namespace Jwc.TfsBuilder.WebApplication.Models
@@ -15,7 +15,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
 
         [Theorem]
         public void AccountIsNull(
-            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut)
+            [NoAutoProperties] BuildParameters sut)
         {
             var actual = sut.Account;
             Assert.Null(actual);
@@ -23,7 +23,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
 
         [Theorem]
         public void AccountReturnsSetValue(
-            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut,
+            [NoAutoProperties] BuildParameters sut,
             string value)
         {
             sut.Account = value;
@@ -39,7 +39,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
 
         [Theorem]
         public void TeamProjectIsNull(
-            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut)
+            [NoAutoProperties] BuildParameters sut)
         {
             var actual = sut.TeamProject;
 
@@ -48,7 +48,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
 
         [Theorem]
         public void TeamProjectReturnsSetValue(
-            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut,
+            [NoAutoProperties] BuildParameters sut,
             string value)
         {
             sut.TeamProject = value;
@@ -64,7 +64,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
 
         [Theorem]
         public void DefinitionNameIsNull(
-            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut)
+            [NoAutoProperties] BuildParameters sut)
         {
             var actual = sut.DefinitionName;
             Assert.Null(actual);
@@ -72,7 +72,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
 
         [Theorem]
         public void DefinitionNameReturnsSetValue(
-            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut,
+            [NoAutoProperties] BuildParameters sut,
             string value)
         {
             sut.DefinitionName = value;
@@ -88,7 +88,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
 
         [Theorem]
         public void PayLoadIsNull(
-            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut)
+            [NoAutoProperties] BuildParameters sut)
         {
             var actual = sut.PayLoad;
             Assert.Null(actual);
@@ -96,7 +96,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
 
         [Theorem]
         public void PayLoadReturnsSetValue(
-            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut,
+            [NoAutoProperties] BuildParameters sut,
             string value)
         {
             sut.PayLoad = value;
@@ -112,7 +112,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
 
         [Theorem]
         public void UserNameIsNull(
-            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut)
+            [NoAutoProperties] BuildParameters sut)
         {
             var actual = sut.UserName;
             Assert.Null(actual);
@@ -120,7 +120,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
 
         [Theorem]
         public void UserNameReturnsSetValue(
-            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut,
+            [NoAutoProperties] BuildParameters sut,
             string value)
         {
             sut.UserName = value;
@@ -136,7 +136,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
 
         [Theorem]
         public void PasswordIsNull(
-            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut)
+            [NoAutoProperties] BuildParameters sut)
         {
             var actual = sut.Password;
             Assert.Null(actual);
@@ -144,7 +144,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
 
         [Theorem]
         public void PasswordReturnsSetValue(
-            [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] BuildParameters sut,
+            [NoAutoProperties] BuildParameters sut,
             string value)
         {
             sut.Password = value;

@@ -2,7 +2,6 @@
 using System.Globalization;
 using System.Web;
 using System.Web.Routing;
-using Jwc.AutoFixture.Xunit;
 using Xunit;
 using Xunit.Extensions;
 

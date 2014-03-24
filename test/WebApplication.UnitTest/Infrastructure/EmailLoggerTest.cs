@@ -1,5 +1,4 @@
 ﻿using System;
-using Jwc.AutoFixture.Xunit;
 using Xunit;
 
 namespace Jwc.TfsBuilder.WebApplication.Infrastructure
