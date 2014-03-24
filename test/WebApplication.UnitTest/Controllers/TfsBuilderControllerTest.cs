@@ -7,6 +7,8 @@ using Jwc.TfsBuilder.WebApplication.Models;
 using Microsoft.TeamFoundation;
 using Microsoft.TeamFoundation.Framework.Client;
 using Moq;
+using Ploeh.AutoFixture;
+using Ploeh.AutoFixture.Kernel;
 using Ploeh.AutoFixture.Xunit;
 using Xunit;
 using Xunit.Extensions;
@@ -30,16 +32,15 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
             Assert.NotNull(actual);
         }
 
-        //[Theorem] TODO: skip
-        //[InlineData(null)]
-        //public void ConstructWithNullBuildCommandThrows(
-        //    [Inject] ICommand<BuildParameters> buildCommand,
-        //    [Build] Lazy<TfsBuilderController> sut)
-        //{
-        //    var e = Assert.Throws<TargetInvocationException>(() => sut.Value);
-        //    var inner = Assert.IsType<ArgumentNullException>(e.InnerException);
-        //    Assert.Equal("buildCommand", inner.ParamName);
-        //}
+        [Theorem]
+        public void ConstructWithNullBuildCommandThrows(IFixture fixture)
+        {
+            fixture.Inject<ICommand<BuildParameters>>(null);
+            fixture.Customize<TfsBuilderController>(
+                c => c.FromFactory(new MethodInvoker(new GreedyConstructorQuery())));
+            var e = Assert.Throws<TargetInvocationException>(() => fixture.Create<TfsBuilderController>());
+            Assert.IsType<ArgumentNullException>(e.InnerException);
+        }
 
         [Theorem]
         public void GetsBuildCommand(
@@ -135,20 +136,22 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
             }
         }
 
-        //[Theorem] TODO: skip
-        //[CommitData]
-        //public void BuildWithCommitsExecutesBuildCommandAndReturnsCorrectMessage(
-        //    [Inject(Matches.Default | Matches.SameName)] string payload,  // to parameters
-        //    [Build] BuildParameters parameters,
-        //    [Inject] ICommand<BuildParameters> buildCommand, // to sut
-        //    [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] TfsBuilderController sut)
-        //{
-        //    var actual = sut.Build(parameters);
+        [Theorem]
+        [CommitData]
+        public void BuildWithCommitsExecutesBuildCommandAndReturnsCorrectMessage(
+            string payload,
+            BuildParameters parameters,
+            [Frozen] ICommand<BuildParameters> buildCommand,
+            [Greedy] TfsBuilderController sut)
+        {
+            parameters.PayLoad = payload;
+            
+            var actual = sut.Build(parameters);
 
-        //    Mock.Get(buildCommand).Verify(x => x.Execute(parameters));
-        //    var contentResult = Assert.IsType<ContentResult>(actual);
-        //    Assert.Equal("Just have queued a new build process.", contentResult.Content);
-        //}
+            Mock.Get(buildCommand).Verify(x => x.Execute(parameters));
+            var contentResult = Assert.IsType<ContentResult>(actual);
+            Assert.Equal("Just have queued a new build process.", contentResult.Content);
+        }
 
         private class NonCommitDataAttribute : DataAttribute
         {
@@ -159,20 +162,22 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
             }
         }
 
-        //[Theorem] TODO: skip
-        //[NonCommitData]
-        //public void BuildWithNoCommitsDoesNotExecuteBulidCommandAndReturnsCorrectMessage(
-        //    [Inject(Matches.Default | Matches.SameName)] string payload,  // to parameters
-        //    [Build] BuildParameters parameters,
-        //    [Inject] ICommand<BuildParameters> buildCommand, // to sut
-        //    [Build(BuildOptions.Default & ~BuildOptions.AutoProperties)] TfsBuilderController sut)
-        //{
-        //    var actual = sut.Build(parameters);
+        [Theorem]
+        [NonCommitData]
+        public void BuildWithNoCommitsDoesNotExecuteBulidCommandAndReturnsCorrectMessage(
+            string payload,
+            BuildParameters parameters,
+            [Frozen] ICommand<BuildParameters> buildCommand,
+            [Greedy] TfsBuilderController sut)
+        {
+            parameters.PayLoad = payload;
 
-        //    Mock.Get(buildCommand).Verify(x => x.Execute(parameters), Times.Never());
-        //    var contentResult = Assert.IsType<ContentResult>(actual);
-        //    Assert.Equal("There are no commits to queue a build process.", contentResult.Content);
-        //}
+            var actual = sut.Build(parameters);
+
+            Mock.Get(buildCommand).Verify(x => x.Execute(parameters), Times.Never());
+            var contentResult = Assert.IsType<ContentResult>(actual);
+            Assert.Equal("There are no commits to queue a build process.", contentResult.Content);
+        }
 
         private class BuildExceptionDataAttribute : DataAttribute
         {

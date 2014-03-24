@@ -2,9 +2,9 @@
 using System.Reflection;
 using System.Web.Mvc;
 using Moq;
+using Ploeh.AutoFixture;
 using Ploeh.AutoFixture.Xunit;
 using Xunit;
-using Xunit.Extensions;
 
 namespace Jwc.TfsBuilder.WebApplication.Infrastructure
 {
@@ -22,16 +22,14 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
             Assert.IsAssignableFrom<IExceptionFilter>(sut);
         }
 
-        // [Theorem] TODO: skip
-        //[InlineData(null)]
-        //public void ConstructWithNullLoggerThrows(
-        //    [Inject] ILogger logger,
-        //    [Build] Lazy<NotifyErrorAttribute> sut)
-        //{
-        //    var e = Assert.Throws<TargetInvocationException>(() => sut.Value);
-        //    var inner = Assert.IsType<ArgumentNullException>(e.InnerException);
-        //    Assert.Equal("logger", inner.ParamName);
-        //}
+        [Theorem]
+        public void ConstructWithNullLoggerThrows(
+            IFixture fixture)
+        {
+            fixture.Inject<ILogger>(null);
+            var e = Assert.Throws<TargetInvocationException>(() => fixture.Create<NotifyErrorAttribute>());
+            Assert.IsType<ArgumentNullException>(e.InnerException);
+        }
 
         [Theorem]
         public void GetsLogger(
