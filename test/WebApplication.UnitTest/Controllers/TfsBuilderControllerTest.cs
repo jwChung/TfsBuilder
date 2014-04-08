@@ -8,7 +8,6 @@ using Microsoft.TeamFoundation;
 using Microsoft.TeamFoundation.Framework.Client;
 using Moq;
 using Ploeh.AutoFixture;
-using Ploeh.AutoFixture.Kernel;
 using Ploeh.AutoFixture.Xunit;
 using Xunit;
 using Xunit.Extensions;
@@ -32,11 +31,11 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
         }
 
         [Theorem]
-        public void ConstructWithNullBuildCommandThrows(IFixture fixture)
+        public void ConstructWithNullBuildCommandThrows(
+            IFixture fixture,
+            [Greedy] TfsBuilderController dummy)
         {
             fixture.Inject<ICommand<BuildParameters>>(null);
-            fixture.Customize<TfsBuilderController>(
-                c => c.FromFactory(new MethodInvoker(new GreedyConstructorQuery())));
             var e = Assert.Throws<TargetInvocationException>(() => fixture.Create<TfsBuilderController>());
             Assert.IsType<ArgumentNullException>(e.InnerException);
         }
