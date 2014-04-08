@@ -17,7 +17,7 @@ namespace Jwc.TfsBuilder.WebApplication
             RouteCollection routes)
         {
             var url = string.Format("~/api/{0}/{1}/{2}", s1, s2, s3);
-            var httpContext = new FakeHttpContext(new FakeHttpRequest(url));
+            var httpContext = new StubHttpContext(new StubHttpRequest(url));
 
             RouteConfig.RegisterRoutes(routes);
 
@@ -38,7 +38,7 @@ namespace Jwc.TfsBuilder.WebApplication
             string url,
             RouteCollection routes)
         {
-            var httpContext = new FakeHttpContext(new FakeHttpRequest(url));
+            var httpContext = new StubHttpContext(new StubHttpRequest(url));
 
             RouteConfig.RegisterRoutes(routes);
 
@@ -55,18 +55,18 @@ namespace Jwc.TfsBuilder.WebApplication
             RouteCollection routes)
         {
             var url = string.Format("{0}/{1}", controller, action);
-            var httpContext = new FakeHttpContext(new FakeHttpRequest(url));
+            var httpContext = new StubHttpContext(new StubHttpRequest(url));
             RouteConfig.RegisterRoutes(routes);
 
             var routeData = routes.GetRouteData(httpContext);
             Assert.Null(routeData);
         }
 
-        private class FakeHttpContext : HttpContextBase
+        private class StubHttpContext : HttpContextBase
         {
             private readonly HttpRequestBase _request;
 
-            public FakeHttpContext(HttpRequestBase request)
+            public StubHttpContext(HttpRequestBase request)
             {
                 _request = request;
             }
@@ -80,11 +80,11 @@ namespace Jwc.TfsBuilder.WebApplication
             }
         }
 
-        private class FakeHttpRequest : HttpRequestBase
+        private class StubHttpRequest : HttpRequestBase
         {
             private readonly string _url;
 
-            public FakeHttpRequest(string url)
+            public StubHttpRequest(string url)
             {
                 _url = url;
             }
