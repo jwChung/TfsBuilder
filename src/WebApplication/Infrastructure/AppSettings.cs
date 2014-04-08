@@ -47,7 +47,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
 
             public override bool TrySetMember(SetMemberBinder binder, object value)
             {
-                throw new RuntimeBinderException("AppSettings does not support settings a value.");
+                throw new RuntimeBinderException("AppSettings does not support setting a value.");
             }
         }
     }

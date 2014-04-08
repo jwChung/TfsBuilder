@@ -48,7 +48,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
             var e = Assert.Throws<RuntimeBinderException>(
                 () => AppSettings.Instance.GoogleAnalyticsTrackingId = value);
 
-            Assert.Contains("AppSettings does not support settings a value.", e.Message);
+            Assert.Contains("AppSettings does not support setting a value.", e.Message);
         }
     }
 }
