@@ -17,22 +17,18 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
         }
 
         [Test]
-        public void InstanceHasGmailIdAsDynamic()
+        public void InstanceHasGmailIdAsDynamic(string expected)
         {
-            var expected = ConfigurationManager.AppSettings["GmailId"];
-
+            ConfigurationManager.AppSettings["GmailId"] = expected;
             var actual = AppSettings.Instance.GmailId;
-
             Assert.Equal(expected, actual);
         }
 
         [Test]
-        public void InstanceHasGoogleAnalyticsTrackingIdAsDynamic()
+        public void InstanceHasGoogleAnalyticsTrackingIdAsDynamic(string expected)
         {
-            var expected = ConfigurationManager.AppSettings["GoogleAnalyticsTrackingId"];
-
+            ConfigurationManager.AppSettings["GoogleAnalyticsTrackingId"] = expected;
             var actual = AppSettings.Instance.GoogleAnalyticsTrackingId;
-
             Assert.Equal(expected, actual);
         }
 
