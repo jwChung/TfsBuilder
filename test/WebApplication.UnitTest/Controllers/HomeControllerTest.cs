@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Web;
 using System.Web.Mvc;
+using Jwc.Experiment.Xunit;
 using MarkdownSharp;
 using Moq;
 using Xunit;
@@ -9,13 +10,13 @@ namespace Jwc.TfsBuilder.WebApplication.Controllers
 {
     public class HomeControllerTest
     {
-        [Theorem]
+        [Test]
         public void IsController(HomeController sut)
         {
             Assert.IsAssignableFrom<Controller>(sut);
         }
 
-        [Theorem]
+        [Test]
         public void IndexReturnsCorrectViewResult(
             HttpContextBase httpContext,
             ControllerContext controllerContext,

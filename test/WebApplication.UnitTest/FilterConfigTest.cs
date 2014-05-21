@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
+using Jwc.Experiment.Xunit;
 using Jwc.TfsBuilder.WebApplication.Infrastructure;
 using Xunit;
 
@@ -7,7 +8,7 @@ namespace Jwc.TfsBuilder.WebApplication
 {
     public class FilterConfigTest
     {
-        [Theorem]
+        [Test]
         public void RegistersCorrectGlobalFilters(GlobalFilterCollection filters)
         {
             Assert.Empty(filters);
@@ -19,7 +20,7 @@ namespace Jwc.TfsBuilder.WebApplication
                 filters.Select(x => x.Instance.GetType()));
         }
 
-        [Theorem]
+        [Test]
         public void RegistersCorrectNotifyErrorAttribute(
             GlobalFilterCollection filters)
         {

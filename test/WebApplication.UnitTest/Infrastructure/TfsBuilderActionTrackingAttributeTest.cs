@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using GoogleAnalyticsTracker.Web.Mvc;
+using Jwc.Experiment.Xunit;
 using Moq;
 using Xunit;
 
@@ -8,13 +9,13 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
 {
     public class TfsBuilderActionTrackingAttributeTest
     {
-        [Theorem]
+        [Test]
         public void IsActionTrackingAttribute(TfsBuilderActionTrackingAttribute sut)
         {
             Assert.IsAssignableFrom<ActionTrackingAttribute>(sut);
         }
 
-        [Theorem]
+        [Test]
         public void GetsTrackingAccount(TfsBuilderActionTrackingAttribute sut)
         {
             var expected = AppSettings.Instance.GoogleAnalyticsTrackingId;
@@ -24,13 +25,13 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
             Assert.Equal(expected, actual);
         }
 
-        [Theorem]
+        [Test]
         public void BuildCurrentActionUrlWithNullContextThrows(TfsBuilderActionTrackingAttribute sut)
         {
             Assert.Throws<ArgumentNullException>(() => sut.BuildCurrentActionUrl(null));
         }
 
-        [Theorem]
+        [Test]
         public void BuildCurrentActionUrlReturnsUrlWithout(
             TfsBuilderActionTrackingAttribute sut,
             Mock<ActionExecutingContext> mockContext)

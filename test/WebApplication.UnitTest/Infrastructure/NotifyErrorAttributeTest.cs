@@ -1,28 +1,29 @@
 ﻿using System;
 using System.Reflection;
 using System.Web.Mvc;
+using Jwc.Experiment.AutoFixture;
+using Jwc.Experiment.Xunit;
 using Moq;
 using Ploeh.AutoFixture;
-using Ploeh.AutoFixture.Xunit;
 using Xunit;
 
 namespace Jwc.TfsBuilder.WebApplication.Infrastructure
 {
     public class NotifyErrorAttributeTest
     {
-        [Theorem]
+        [Test]
         public void IsFilterAttribute(NotifyErrorAttribute sut)
         {
             Assert.IsAssignableFrom<FilterAttribute>(sut);
         }
 
-        [Theorem]
+        [Test]
         public void IsExceptionFilter(NotifyErrorAttribute sut)
         {
             Assert.IsAssignableFrom<IExceptionFilter>(sut);
         }
 
-        [Theorem]
+        [Test]
         public void ConstructWithNullLoggerThrows(
             IFixture fixture)
         {
@@ -31,7 +32,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
             Assert.IsType<ArgumentNullException>(e.InnerException);
         }
 
-        [Theorem]
+        [Test]
         public void GetsLogger(
             [Frozen] ILogger expected,
             [Greedy] NotifyErrorAttribute sut)
@@ -41,14 +42,14 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
             Assert.Equal(expected, actual);
         }
 
-        [Theorem]
+        [Test]
         public void OnExceptionWithNullFilterContextThrows(NotifyErrorAttribute sut)
         {
             var e = Assert.Throws<ArgumentNullException>(() => sut.OnException(null));
             Assert.Equal("filterContext", e.ParamName);
         }
         
-        [Theorem]
+        [Test]
         public void OnExceptionLogsAndHandlesException(
             Exception exception,
             [Frozen] ILogger logger,

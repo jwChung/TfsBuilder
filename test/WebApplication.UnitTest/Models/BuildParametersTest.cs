@@ -1,25 +1,26 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Reflection;
+using Jwc.Experiment.Xunit;
 using Xunit;
 
 namespace Jwc.TfsBuilder.WebApplication.Models
 {
     public class BuildParametersTest
     {
-        [Theorem]
+        [Test]
         public void AccountHasRequiredAttribute()
         {
             AssertToHaveRequiredAttribute("Account");
         }
 
-        [Theorem]
+        [Test]
         public void AccountIsNull(BuildParameters sut)
         {
             var actual = sut.Account;
             Assert.Null(actual);
         }
 
-        [Theorem]
+        [Test]
         public void AccountReturnsSetValue(
             BuildParameters sut,
             string value)
@@ -29,13 +30,13 @@ namespace Jwc.TfsBuilder.WebApplication.Models
             Assert.Equal(value, actual);
         }
 
-        [Theorem]
+        [Test]
         public void TeamProjectHasRequiredAttribute()
         {
             AssertToHaveRequiredAttribute("TeamProject");
         }
 
-        [Theorem]
+        [Test]
         public void TeamProjectIsNull(BuildParameters sut)
         {
             var actual = sut.TeamProject;
@@ -43,7 +44,7 @@ namespace Jwc.TfsBuilder.WebApplication.Models
             Assert.Null(actual);
         }
 
-        [Theorem]
+        [Test]
         public void TeamProjectReturnsSetValue(
             BuildParameters sut,
             string value)
@@ -53,20 +54,20 @@ namespace Jwc.TfsBuilder.WebApplication.Models
             Assert.Equal(value, actual);
         }
 
-        [Theorem]
+        [Test]
         public void DefinitionNameHasRequiredAttribute()
         {
             AssertToHaveRequiredAttribute("DefinitionName");
         }
 
-        [Theorem]
+        [Test]
         public void DefinitionNameIsNull(BuildParameters sut)
         {
             var actual = sut.DefinitionName;
             Assert.Null(actual);
         }
 
-        [Theorem]
+        [Test]
         public void DefinitionNameReturnsSetValue(
             BuildParameters sut,
             string value)
@@ -76,20 +77,20 @@ namespace Jwc.TfsBuilder.WebApplication.Models
             Assert.Equal(value, actual);
         }
 
-        [Theorem]
+        [Test]
         public void PayLoadHasRequiredAttribute()
         {
             AssertToHaveRequiredAttribute("PayLoad");
         }
 
-        [Theorem]
+        [Test]
         public void PayLoadIsNull(BuildParameters sut)
         {
             var actual = sut.PayLoad;
             Assert.Null(actual);
         }
 
-        [Theorem]
+        [Test]
         public void PayLoadReturnsSetValue(
             BuildParameters sut,
             string value)
@@ -99,20 +100,20 @@ namespace Jwc.TfsBuilder.WebApplication.Models
             Assert.Equal(value, actual);
         }
 
-        [Theorem]
+        [Test]
         public void UserNameHasRequiredAttribute()
         {
             AssertToHaveRequiredAttribute("UserName");
         }
 
-        [Theorem]
+        [Test]
         public void UserNameIsNull(BuildParameters sut)
         {
             var actual = sut.UserName;
             Assert.Null(actual);
         }
 
-        [Theorem]
+        [Test]
         public void UserNameReturnsSetValue(
             BuildParameters sut,
             string value)
@@ -122,20 +123,20 @@ namespace Jwc.TfsBuilder.WebApplication.Models
             Assert.Equal(value, actual);
         }
 
-        [Theorem]
+        [Test]
         public void PasswordHasRequiredAttribute()
         {
             AssertToHaveRequiredAttribute("Password");
         }
 
-        [Theorem]
+        [Test]
         public void PasswordIsNull(BuildParameters sut)
         {
             var actual = sut.Password;
             Assert.Null(actual);
         }
 
-        [Theorem]
+        [Test]
         public void PasswordReturnsSetValue(
             BuildParameters sut,
             string value)

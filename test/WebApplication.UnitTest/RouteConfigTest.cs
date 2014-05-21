@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Web;
 using System.Web.Routing;
+using Jwc.Experiment.Xunit;
 using Xunit;
 using Xunit.Extensions;
 
@@ -9,7 +10,7 @@ namespace Jwc.TfsBuilder.WebApplication
 {
     public class RouteConfigTest
     {
-        [Theorem]
+        [Test]
         public void RegistersCorrectBuildRoute(
             string s1,
             string s2,
@@ -29,7 +30,7 @@ namespace Jwc.TfsBuilder.WebApplication
             Assert.Equal(s3, routeData.Values["definitionName"]);
         }
 
-        [Theorem]
+        [Test]
         [InlineData("~/")]
         [InlineData("~/Home")]
         [InlineData("~/Home/Index")]
@@ -48,7 +49,7 @@ namespace Jwc.TfsBuilder.WebApplication
             Assert.Equal("Index", (string)routeData.Values["action"], stringComparer);
         }
 
-        [Theorem]
+        [Test]
         public void DoesNotRegisterAnyOtherRoute(
             string controller,
             string action,

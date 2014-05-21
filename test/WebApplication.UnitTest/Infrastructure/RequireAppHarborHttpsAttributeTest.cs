@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Specialized;
 using System.Web.Mvc;
+using Jwc.Experiment.Xunit;
 using Moq;
 using Xunit;
 using Xunit.Extensions;
@@ -9,13 +10,13 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
 {
     public class RequireAppHarborHttpsAttributeTest
     {
-        [Theorem]
+        [Test]
         public void IsRequireHttpsAttribute(RequireAppHarborHttpsAttribute sut)
         {
             Assert.IsAssignableFrom<RequireHttpsAttribute>(sut);
         }
 
-        [Theorem]
+        [Test]
         public void OnAuthorizationWithNullFilterContextThrows(
             RequireAppHarborHttpsAttribute sut)
         {
@@ -23,7 +24,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
             Assert.Equal("filterContext", e.ParamName);
         }
 
-        [Theorem]
+        [Test]
         public void OnAuthorizationWithSecureConnectionDoesNotThrow(
             RequireAppHarborHttpsAttribute sut,
             Mock<AuthorizationContext> mockFilterContext)
@@ -34,7 +35,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
             Assert.DoesNotThrow(() => sut.OnAuthorization(mockFilterContext.Object));
         }
 
-        [Theorem]
+        [Test]
         [InlineData("https")]
         [InlineData("HTTPS")]
         [InlineData("Https")]
@@ -50,7 +51,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
             Assert.DoesNotThrow(() => sut.OnAuthorization(mockFilterContext.Object));
         }
 
-        [Theorem]
+        [Test]
         public void OnAuthorizationWithLocalRequestDoesNotThrow(
             RequireAppHarborHttpsAttribute sut,
             Mock<AuthorizationContext> mockFilterContext)
@@ -61,7 +62,7 @@ namespace Jwc.TfsBuilder.WebApplication.Infrastructure
             Assert.DoesNotThrow(() => sut.OnAuthorization(mockFilterContext.Object));
         }
 
-        [Theorem]
+        [Test]
         public void OnAuthorizationWithNonSSLRequestThrows(
             RequireAppHarborHttpsAttribute sut,
             Mock<AuthorizationContext> mockFilterContext)
