@@ -4,6 +4,43 @@
         <name>Jwc.Experiment.Xunit</name>
     </assembly>
     <members>
+        <member name="T:Jwc.Experiment.Xunit.AssemblyFixtureConfigAttribute">
+            <summary>
+            Attribute to supply a type of which instance will be used to set up or
+            to tear down a test fixture only once on assembly level.
+            </summary>
+        </member>
+        <member name="M:Jwc.Experiment.Xunit.AssemblyFixtureConfigAttribute.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the
+            <see cref="T:Jwc.Experiment.Xunit.AssemblyFixtureConfigAttribute"/> class.
+            </summary>
+            <param name="configClass">
+            A type to be used to set up or to tear down a test fixture only once
+            on assembly level.
+            </param>
+        </member>
+        <member name="P:Jwc.Experiment.Xunit.AssemblyFixtureConfigAttribute.ConfigClass">
+            <summary>
+            Gets a type to be used to set up or to tear down a test fixture only
+            once on assembly level.
+            </summary>
+        </member>
+        <member name="T:Jwc.Experiment.Xunit.NotSupportedFixtureFactory">
+            <summary>
+            Represents test fixture factory which throws
+            <see cref="T:System.NotSupportedException"/> when the <code>Create</code>
+            method is called.
+            </summary>
+        </member>
+        <member name="M:Jwc.Experiment.Xunit.NotSupportedFixtureFactory.Create(System.Reflection.MethodInfo)">
+            <summary>
+            Throws <see cref="T:System.NotSupportedException"/>.
+            </summary>
+            <param name="testMethod">
+            The test method in which the test fixture will be used.
+            </param>
+        </member>
         <member name="T:Jwc.Experiment.Xunit.TestAttribute">
             <summary>
             이 attribute는 method위에 선언되어 해당 method가 test라는 것을
@@ -206,26 +243,22 @@
             Gets the test delegate.
             </summary>
         </member>
-        <member name="T:Jwc.Experiment.Xunit.TestFixtureFactoryTypeAttribute">
+        <member name="T:Jwc.Experiment.Xunit.DefaultFixtureFactory">
             <summary>
-            An attribute to declare a type implementing the
-            <see cref="T:Jwc.Experiment.ITestFixtureFactory"/> interface. An instance of type will be
-            only once intitalized on a certain test-assembly(dll) and will create
-            every instance of <see cref="T:Jwc.Experiment.ITestFixture"/> for all the tests.
+            Supplies harbor of <see cref="T:Jwc.Experiment.ITestFixtureFactory"/>.
             </summary>
         </member>
-        <member name="M:Jwc.Experiment.Xunit.TestFixtureFactoryTypeAttribute.#ctor(System.Type)">
+        <member name="M:Jwc.Experiment.Xunit.DefaultFixtureFactory.SetCurrent(Jwc.Experiment.ITestFixtureFactory)">
             <summary>
-            Initializes a new instance of the
-            <see cref="T:Jwc.Experiment.Xunit.TestFixtureFactoryTypeAttribute"/> class.
+            Sets a factory of test fixture.
             </summary>
-            <param name="type">
-            The type implementing <see cref="T:Jwc.Experiment.ITestFixtureFactory"/>.
+            <param name="testFixtureFactory">
+            The factory of test fixture.
             </param>
         </member>
-        <member name="P:Jwc.Experiment.Xunit.TestFixtureFactoryTypeAttribute.Type">
+        <member name="P:Jwc.Experiment.Xunit.DefaultFixtureFactory.Current">
             <summary>
-            Gets a value indicating the type implementing
+            Gets a value inicating the current
             <see cref="T:Jwc.Experiment.ITestFixtureFactory"/>.
             </summary>
         </member>

@@ -46,17 +46,17 @@
       <HintPath>..\..\packages\GoogleAnalyticsTracker.1.7.11\lib\net40\GoogleAnalyticsTracker.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Jwc.Experiment">
-      <HintPath>..\..\packages\Experiment.AutoFixture.0.21.1\lib\net40\Jwc.Experiment.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Jwc.Experiment, Version=0.22.0.0, Culture=neutral, PublicKeyToken=db4e4bc25029966c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Experiment.AutoFixture.0.22.0\lib\net40\Jwc.Experiment.dll</HintPath>
     </Reference>
-    <Reference Include="Jwc.Experiment.AutoFixture">
-      <HintPath>..\..\packages\Experiment.AutoFixture.0.21.1\lib\net40\Jwc.Experiment.AutoFixture.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Jwc.Experiment.AutoFixture, Version=0.22.0.0, Culture=neutral, PublicKeyToken=db4e4bc25029966c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Experiment.AutoFixture.0.22.0\lib\net40\Jwc.Experiment.AutoFixture.dll</HintPath>
     </Reference>
-    <Reference Include="Jwc.Experiment.Xunit">
-      <HintPath>..\..\packages\Experiment.Xunit.0.21.1\lib\net40\Jwc.Experiment.Xunit.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Jwc.Experiment.Xunit, Version=0.22.0.0, Culture=neutral, PublicKeyToken=db4e4bc25029966c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Experiment.Xunit.0.22.0\lib\net40\Jwc.Experiment.Xunit.dll</HintPath>
     </Reference>
     <Reference Include="MarkdownSharp">
       <HintPath>..\..\packages\MarkdownSharp.1.13.0.0\lib\35\MarkdownSharp.dll</HintPath>
@@ -136,7 +136,7 @@
     <Compile Include="Models\BuildParametersTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RouteConfigTest.cs" />
-    <Compile Include="WebApplicationFixtureFactory.cs" />
+    <Compile Include="TestFixtureFactoryConfig.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">
